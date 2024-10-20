@@ -1,5 +1,5 @@
 <template>
   <div>
-    HOME
+    <TransactionForm />
   </div>
 </template>
