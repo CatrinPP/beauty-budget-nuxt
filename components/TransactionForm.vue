@@ -16,7 +16,8 @@ const handleSubmit = (evt: Event) => {
   <form class="transaction-form" method="post" @submit.prevent="handleSubmit">
     <fieldset class="transaction-form__fieldset" name="transaction">
       <legend class="transaction-form__legend">Добавляем транзакцию</legend>
-      <Input
+      <UIInput
+        v-model.trim="category"
         :input-props="{
           class: 'transaction-form__input',
           id: 'transaction-category',
@@ -24,17 +25,17 @@ const handleSubmit = (evt: Event) => {
           placeholder: 'Категория',
           required: true,
         }"
-        v-model.trim="category"
       />
-      <Select
+      <UISelect
+        v-model="selected"
         :select-props="{
           class: 'transaction-form__input',
           id: 'transaction-type',
           required: true,
         }"
-        v-model="selected"
       />
-      <Input
+      <UIInput
+        v-model="sum"
         :input-props="{
           class: 'transaction-form__input',
           id: 'transaction-amount',
@@ -43,9 +44,9 @@ const handleSubmit = (evt: Event) => {
           type: 'number',
           required: true,
         }"
-        v-model="sum"
       />
-      <Input
+      <UIInput
+        v-model="date"
         :input-props="{
           class: 'transaction-form__input',
           id: 'transaction-date',
@@ -53,7 +54,6 @@ const handleSubmit = (evt: Event) => {
           type: 'date',
           required: true,
         }"
-        v-model="date"
       />
     </fieldset>
 

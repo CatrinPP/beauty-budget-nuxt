@@ -1,5 +1,3 @@
 <template>
-  <div>
-    DASHBOARD
-  </div>
+  <div>DASHBOARD</div>
 </template>

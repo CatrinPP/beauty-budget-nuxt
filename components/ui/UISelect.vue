@@ -6,12 +6,11 @@ interface Props {
 }
 
 const { selectProps } = defineProps<Props>();
-
-const model = defineModel();
+const model = defineModel<string>();
 </script>
 
 <template>
-  <select class="ui-select" v-bind="selectProps" v-model="model">
+  <select v-model="model" class="ui-select" v-bind="selectProps">
     <option disabled value="">Выберите тип</option>
     <option>+ / доходы</option>
     <option>- / расходы</option>

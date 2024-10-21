@@ -6,12 +6,12 @@ interface Props {
 }
 
 const { inputProps } = defineProps<Props>();
-
-const model = defineModel();
+const model = defineModel<string | number>();
 </script>
 
 <template>
-  <input class="ui-input" v-bind="inputProps" v-model="model" />
+  <!-- prettier-ignore -->
+  <input v-model="model" class="ui-input" v-bind="inputProps" >
 </template>
 
 <style lang="scss" scoped>

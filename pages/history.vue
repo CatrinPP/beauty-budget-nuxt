@@ -1,5 +1,3 @@
 <template>
-  <div>
-    HISTORY
-  </div>
+  <div>HISTORY</div>
 </template>
