@@ -1,14 +1,28 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import dayjs from 'dayjs';
+import type { ITransaction } from '~/types/transaction';
+import type { TransactionType } from '~/constants/transaction';
 
+const id = useId();
 const category = ref('New');
 const selected = ref('');
 const date = ref(dayjs().format('YYYY-MM-DD'));
 const sum = ref(900);
+const store = useTransactionsStore();
 
 const handleSubmit = (evt: Event) => {
-  alert(JSON.stringify(evt.target));
+  evt.preventDefault();
+
+  const newTransaction: ITransaction = {
+    id: `T${date.value}${id}`,
+    category: category.value,
+    date: date.value,
+    sum: sum.value,
+    type: selected.value as TransactionType,
+  };
+
+  store.addTransaction(newTransaction);
 };
 </script>
 

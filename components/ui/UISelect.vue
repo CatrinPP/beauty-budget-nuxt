@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SelectHTMLAttributes } from 'vue';
+import { TransactionType } from '~/constants/transaction';
 
 interface Props {
   selectProps: SelectHTMLAttributes;
@@ -12,8 +13,8 @@ const model = defineModel<string>();
 <template>
   <select v-model="model" class="ui-select" v-bind="selectProps">
     <option disabled value="">Выберите тип</option>
-    <option>+ / доходы</option>
-    <option>- / расходы</option>
+    <option :value="TransactionType.INCOME">+ / доходы</option>
+    <option :value="TransactionType.OUTCOME">- / расходы</option>
   </select>
 </template>
 

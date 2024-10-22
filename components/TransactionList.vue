@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import dayjs from 'dayjs';
 import { TransactionSign } from '~/constants/transaction';
 import type { ITransaction } from '~/types/transaction';
 
@@ -16,7 +17,9 @@ const { transactions } = defineProps<Props>();
         `${TransactionSign[transaction.type]}${transaction.sum}`
       }}</span>
       <span class="transaction-list__item-data">{{ transaction.category }}</span>
-      <span class="transaction-list__item-data">{{ transaction.date }}</span>
+      <span class="transaction-list__item-data">{{
+        dayjs(transaction.date).format('DD.MM.YYYY')
+      }}</span>
     </li>
   </ul>
 </template>
