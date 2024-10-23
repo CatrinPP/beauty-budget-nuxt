@@ -7,3 +7,9 @@ export interface ITransaction {
   sum: number;
   type: TransactionType;
 }
+
+export interface ITotalTransactionSum {
+  total: number;
+  income: number;
+  outcome: number;
+}

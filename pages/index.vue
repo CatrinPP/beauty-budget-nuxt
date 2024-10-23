@@ -11,5 +11,8 @@ const store = useTransactionsStore();
       <h2>Последние транзакции</h2>
       <TransactionList :transactions="store.lastTransactions" />
     </section>
+    <section>
+      <h2>За этот месяц</h2>
+    </section>
   </div>
 </template>
