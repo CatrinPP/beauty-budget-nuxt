@@ -10,13 +10,13 @@ const { to, title, icon } = defineProps<Props>();
 
 <template>
   <NuxtLink class="header-link" active-class="header-link_active" :to :title>
-    <svg class="header-link__icon" viewBox="-2 0 44 44" width="44" height="44" :title>
+    <svg class="header-link__icon" viewBox="-2 0 34 34" width="34" height="34" :title>
       <use :href="`/sprite.svg#${icon}`" />
     </svg>
   </NuxtLink>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .header-link {
   display: inline-flex;
   align-items: center;
@@ -28,11 +28,19 @@ const { to, title, icon } = defineProps<Props>();
 
 .header-link_active {
   .header-link__icon {
-    fill: red;
+    fill: var(--color-theme-primary);
   }
 }
 
 .header-link__icon {
-  fill: #000000;
+  height: 34px;
+  width: 34px;
+
+  fill: var(--color-text);
+
+  @include desktop() {
+    height: 44px;
+    width: 44px;
+  }
 }
 </style>

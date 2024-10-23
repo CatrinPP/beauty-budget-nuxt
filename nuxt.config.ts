@@ -10,6 +10,7 @@ export default defineNuxtConfig({
         scss: {
           api: 'modern',
           additionalData: `
+            @use "assets/scss/_variables.scss" as *;
             @use "assets/scss/_mixins.scss" as *;
           `,
         },

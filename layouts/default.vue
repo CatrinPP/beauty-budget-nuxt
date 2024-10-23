@@ -1,21 +1,44 @@
 <template>
   <div class="main-layout">
-    <PageHeader />
-    <slot />
+    <div class="main-layout__wrapper">
+      <PageHeader />
+      <slot />
+    </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .main-layout {
+  box-sizing: border-box;
+  display: grid;
+  min-height: 100vh;
+  padding: $mobile-outer-gap;
+
+  background-color: var(--color-main-light);
+
+  @include desktop() {
+    padding: $desktop-outer-gap;
+  }
+}
+
+.main-layout__wrapper {
+  box-sizing: border-box;
   display: grid;
   align-content: start;
+  gap: $mobile-inner-gap;
   margin: 0 auto;
-  max-width: 900px;
-  min-height: 100vh;
-  box-sizing: border-box;
-  padding: 24px;
+  padding: $mobile-outer-gap;
+  width: 100%;
+  max-width: 700px;
 
-  background-color: #eeeeee;
+  background-color: white;
   border-radius: 24px;
+  box-shadow: $box-shadow;
+
+  @include desktop() {
+    max-width: 900px;
+    gap: $desktop-inner-gap;
+    padding: $desktop-outer-gap;
+  }
 }
 </style>
