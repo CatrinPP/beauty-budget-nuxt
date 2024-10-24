@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { useTransactionsStore } from '~/stores/transactions';
+import type { IBarChartValue } from '~/types/chart';
 
 const store = useTransactionsStore();
+const barChartValues: IBarChartValue[] = [
+  ['Доходы', store.totalTransactionsSum.income],
+  ['Расходы', store.totalTransactionsSum.outcome],
+];
 </script>
 
 <template>
@@ -15,6 +20,11 @@ const store = useTransactionsStore();
       title="Расходы по категориям"
       :values="store.outcomeCategoriesSortedBySum"
       :total="store.totalTransactionsSum.outcome"
+    />
+    <BarChart
+      title="Доходы vs Расходы"
+      :total="store.totalTransactionsSum.total"
+      :values="barChartValues"
     />
   </div>
 </template>
