@@ -1,6 +1,7 @@
 import { TransactionType } from '~/constants/transaction';
 import type { ITotalTransactionSum, ITransaction } from '~/types/transaction';
 import type { IChartCategory } from '~/types/chart';
+import dayjs from 'dayjs';
 
 interface State {
   transactions: ITransaction[];
@@ -123,7 +124,33 @@ export const useTransactionsStore = defineStore('transactionsStore', {
       this.transactions = transactions;
     },
     addTransaction(newTransaction: ITransaction) {
-      this.transactions.push(newTransaction);
+      const getIndexBySortedDate = (startIndex: number, endIndex: number): number => {
+        let index = startIndex;
+
+        if (
+          startIndex === endIndex ||
+          dayjs(newTransaction.date).isAfter(dayjs(this.transactions[startIndex].date)) ||
+          newTransaction.date === this.transactions[startIndex].date
+        ) {
+          return index;
+        } else if (
+          dayjs(newTransaction.date).isBefore(dayjs(this.transactions[endIndex].date)) ||
+          newTransaction.date === this.transactions[endIndex].date
+        ) {
+          index = endIndex + 1;
+        } else {
+          index = getIndexBySortedDate(startIndex + 1, endIndex - 1);
+        }
+
+        return index || 0;
+      };
+
+      if (!this.transactions.length) {
+        this.transactions.push(newTransaction);
+      } else {
+        const index = getIndexBySortedDate(0, this.transactions.length - 1);
+        this.transactions.splice(index, 0, newTransaction);
+      }
     },
   },
 });
