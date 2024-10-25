@@ -12,12 +12,12 @@
   box-sizing: border-box;
   display: grid;
   min-height: 100vh;
-  padding: $mobile-outer-gap;
+  padding: $mobile-outer-gap calc($mobile-outer-gap * 2);
 
   background-color: var(--color-main-light);
 
   @include desktop() {
-    padding: $desktop-outer-gap;
+    padding: $desktop-outer-gap calc($desktop-outer-gap * 2);
   }
 }
 
@@ -36,7 +36,7 @@
   box-shadow: $box-shadow;
 
   @include desktop() {
-    max-width: 900px;
+    max-width: 860px;
     gap: $desktop-inner-gap;
     padding: $desktop-outer-gap;
   }

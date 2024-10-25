@@ -24,18 +24,24 @@ const { transactions } = defineProps<Props>();
   </ul>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .transaction-list {
-  display: grid;
-  align-content: start;
-  gap: 20px;
+  @include reset-list();
 }
 
 .transaction-list__item {
+  @include reset-list-item();
   display: grid;
   grid-template-columns: minmax(100px, 30%) 1fr minmax(100px, 30%);
-  gap: 20px;
+  gap: $mobile-inner-gap;
+  padding: 14px 30px;
 
-  list-style: none;
+  @include text();
+
+  border-bottom: 1px solid var(--color-main-light);
+}
+
+.transaction-list__item-data:last-child {
+  text-align: end;
 }
 </style>

@@ -5,10 +5,10 @@ import type { ITransaction } from '~/types/transaction';
 import type { TransactionType } from '~/constants/transaction';
 
 const id = useId();
-const category = ref('New');
+const category = ref('');
 const selected = ref('');
 const date = ref(dayjs().format('YYYY-MM-DD'));
-const sum = ref(900);
+const sum = ref();
 const store = useTransactionsStore();
 
 const handleSubmit = (evt: Event) => {
@@ -29,7 +29,6 @@ const handleSubmit = (evt: Event) => {
 <template>
   <form class="transaction-form" method="post" @submit.prevent="handleSubmit">
     <fieldset class="transaction-form__fieldset" name="transaction">
-      <legend class="transaction-form__legend">Добавляем транзакцию</legend>
       <UIInput
         v-model.trim="category"
         :input-props="{
@@ -71,22 +70,34 @@ const handleSubmit = (evt: Event) => {
       />
     </fieldset>
 
-    <button class="transaction-form__button" type="submit">Добавить</button>
+    <UIButton element-class="transaction-form__button" text="Добавить" type="submit" />
   </form>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .transaction-form {
   display: grid;
-  gap: 20px;
+  gap: $mobile-inner-gap;
+
+  @include desktop() {
+    gap: $desktop-inner-gap;
+  }
 }
 
 .transaction-form__fieldset {
-  border: none;
   display: grid;
-  gap: 20px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 16px;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+
+  border: none;
+
+  @include desktop() {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.transaction-form__button {
+  justify-self: center;
 }
 </style>

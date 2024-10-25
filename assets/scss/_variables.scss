@@ -2,7 +2,9 @@
 $font-main: var(--font-main);
 
 // DECORATIVE
-$box-shadow: 0 0 6px 10px rgba(#474350, 0.06);
+$box-shadow: 0 0 14px 10px rgba(var(--color-main-dark), 0.06);
+$ui-border-radius: 8px;
+$transition: 0.25s ease;
 
 // LAYOUT
 $desktop-width: 1366px;

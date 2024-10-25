@@ -24,11 +24,23 @@ const { to, title, icon } = defineProps<Props>();
   justify-content: center;
 
   text-decoration: none;
+
+  &:hover {
+    .header-link__icon {
+      opacity: 0.85;
+    }
+  }
+
+  &:active {
+    .header-link__icon {
+      opacity: 0.95;
+    }
+  }
 }
 
 .header-link_active {
   .header-link__icon {
-    fill: var(--color-theme-primary);
+    fill: var(--color-accent);
   }
 }
 
@@ -37,6 +49,7 @@ const { to, title, icon } = defineProps<Props>();
   width: 34px;
 
   fill: var(--color-text);
+  transition: opacity $transition;
 
   @include desktop() {
     height: 44px;

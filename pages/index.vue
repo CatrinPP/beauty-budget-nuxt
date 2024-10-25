@@ -1,18 +1,66 @@
 <script setup lang="ts">
 import { useTransactionsStore } from '~/stores/transactions';
+import type { IBarChartValue } from '~/types/chart';
 
 const store = useTransactionsStore();
+const barChartValues: IBarChartValue[] = [
+  ['Доходы', store.totalTransactionsSum.income],
+  ['Расходы', store.totalTransactionsSum.outcome],
+];
 </script>
 
 <template>
-  <div>
+  <div class="main-page">
     <TransactionForm />
-    <section>
-      <h2>Последние транзакции</h2>
-      <TransactionList :transactions="store.lastTransactions" />
+    <section class="main-page__section">
+      <h2 class="main-page__section-title">Последние транзакции</h2>
+      <TransactionList
+        v-if="store.lastTransactions.length"
+        :transactions="store.lastTransactions"
+      />
+      <p v-else class="main-page__section-text">Нет данных</p>
     </section>
-    <section>
-      <h2>За этот месяц</h2>
+    <section class="main-page__section">
+      <h2 class="main-page__section-title">За этот месяц</h2>
+      <BarChart
+        v-if="store.lastTransactions.length"
+        title="Доходы vs Расходы"
+        :total="store.totalTransactionsSum.total"
+        :values="barChartValues"
+      />
+      <p v-else class="main-page__section-text">Нет данных</p>
     </section>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.main-page {
+  display: grid;
+  align-content: start;
+  gap: $mobile-outer-gap;
+
+  @include desktop() {
+    gap: $desktop-outer-gap;
+  }
+}
+
+.main-page__section {
+  display: grid;
+  align-content: start;
+  gap: $mobile-inner-gap;
+
+  @include desktop() {
+    gap: $desktop-inner-gap;
+  }
+}
+
+.main-page__section-title {
+  @include subtitle();
+  text-align: center;
+}
+
+.main-page__section-text {
+  @include text();
+  text-align: center;
+}
+</style>

@@ -1,29 +1,20 @@
 <script setup lang="ts">
 import { AppRoute } from '~/constants/app-route';
 
+const PageTitle = {
+  [AppRoute.ROOT]: 'Добавить запись',
+  [AppRoute.HISTORY]: 'Список транзакций',
+  [AppRoute.CHARTS]: 'Графики',
+  [AppRoute.SETTINGS]: 'Настройки',
+};
+
 const route = useRoute();
-
-function getTitle() {
-  switch (route.path) {
-    case AppRoute.ROOT:
-      return 'Главная';
-    case AppRoute.HISTORY:
-      return 'История транзакций';
-    case AppRoute.CHARTS:
-      return 'Графики';
-    case AppRoute.SETTINGS:
-      return 'Настройки';
-    default:
-      return '';
-  }
-}
-
-const title = ref(getTitle());
+const title = ref(PageTitle[route.path] || '');
 
 watch(
   () => route.path,
   () => {
-    title.value = getTitle();
+    title.value = PageTitle[route.path] || '';
   }
 );
 </script>
@@ -31,10 +22,10 @@ watch(
 <template>
   <header class="page-header">
     <nav class="page-header__nav">
-      <HeaderLink :to="AppRoute.ROOT" :title icon="home" />
-      <HeaderLink :to="AppRoute.HISTORY" :title icon="history" />
-      <HeaderLink :to="AppRoute.CHARTS" :title icon="chart" />
-      <HeaderLink :to="AppRoute.SETTINGS" :title icon="cog" />
+      <HeaderLink :to="AppRoute.ROOT" :title="PageTitle[AppRoute.ROOT]" icon="home" />
+      <HeaderLink :to="AppRoute.HISTORY" :title="PageTitle[AppRoute.HISTORY]" icon="history" />
+      <HeaderLink :to="AppRoute.CHARTS" :title="PageTitle[AppRoute.CHARTS]" icon="chart" />
+      <HeaderLink :to="AppRoute.SETTINGS" :title="PageTitle[AppRoute.SETTINGS]" icon="cog" />
     </nav>
     <h1 class="page-header__title">{{ title }}</h1>
   </header>
@@ -43,12 +34,12 @@ watch(
 <style scoped lang="scss">
 .page-header {
   display: grid;
-  gap: $mobile-inner-gap;
+  gap: $mobile-outer-gap;
   align-content: start;
   justify-items: center;
 
   @include desktop() {
-    gap: $desktop-inner-gap;
+    gap: $desktop-outer-gap;
   }
 }
 

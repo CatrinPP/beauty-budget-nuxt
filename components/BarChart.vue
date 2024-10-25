@@ -72,9 +72,10 @@ const getHeightPercentage = (value: number) => {
 }
 
 .bar-chart__diagram-item {
-  height: 100%;
-  transition: height 0.2s ease;
   width: 30px;
+  height: 100%;
+
+  transition: height $transition;
 }
 
 .bar-chart__diagram-item:nth-child(2n - 1) {

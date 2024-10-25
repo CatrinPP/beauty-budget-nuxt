@@ -1,18 +1,18 @@
 /* palette */
 :root {
-  --color-theme-primary: #e63462;
-  --color-theme-primary-light: #e494aa;
-  --color-theme-primary-dark: #7d1c36;
-
   --color-main-dark: #474350;
   --color-main-light: #dfd7d7;
+
+  --color-accent: #e63462;
+  --color-accent-light: #e494aa;
+  --color-accent-dark: #7d1c36;
 }
 
 /* semantic color variables */
 :root {
   --font-main: "Helvetica", "Arial", sans-serif;
-  --color-border: rgba(60, 60, 60, 0.12);
-  --color-border-hover: rgba(60, 60, 60, 0.29);
+  --color-border: var(--color-main-light);
+  --color-border-hover: var(--color-main-dark);
   --color-text: var(--color-main-dark);
 }
 
