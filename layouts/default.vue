@@ -12,9 +12,12 @@
   box-sizing: border-box;
   display: grid;
   min-height: 100vh;
-  padding: $mobile-outer-gap calc($mobile-outer-gap * 2);
 
   background-color: var(--color-main-light);
+
+  @include wide-mobile() {
+    padding: $mobile-outer-gap;
+  }
 
   @include desktop() {
     padding: $desktop-outer-gap calc($desktop-outer-gap * 2);
@@ -26,14 +29,18 @@
   display: grid;
   align-content: start;
   gap: $mobile-inner-gap;
-  margin: 0 auto;
-  padding: $mobile-outer-gap;
   width: 100%;
   max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
 
   background-color: white;
-  border-radius: 24px;
   box-shadow: $box-shadow;
+
+  @include wide-mobile() {
+    border-radius: 24px;
+    padding: $mobile-outer-gap;
+  }
 
   @include desktop() {
     max-width: 860px;

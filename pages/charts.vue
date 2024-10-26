@@ -10,7 +10,7 @@ const barChartValues: IBarChartValue[] = [
 </script>
 
 <template>
-  <div>
+  <div class="charts-page">
     <PieChart
       title="Доходы по категориям"
       :values="store.incomeCategoriesSortedBySum"
@@ -28,3 +28,22 @@ const barChartValues: IBarChartValue[] = [
     />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.charts-page {
+  display: grid;
+  align-content: start;
+  justify-items: stretch;
+  gap: $mobile-outer-gap;
+  width: 100%;
+  margin: 0 auto;
+
+  @include wide-mobile() {
+    max-width: 500px;
+  }
+
+  @include desktop() {
+    gap: $desktop-outer-gap;
+  }
+}
+</style>

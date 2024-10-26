@@ -32,13 +32,18 @@ const { transactions } = defineProps<Props>();
 .transaction-list__item {
   @include reset-list-item();
   display: grid;
-  grid-template-columns: minmax(100px, 30%) 1fr minmax(100px, 30%);
+  grid-template-columns: minmax(80px, 30%) 1fr minmax(80px, 30%);
   gap: $mobile-inner-gap;
-  padding: 14px 30px;
+  padding: 14px 0;
 
   @include text();
 
   border-bottom: 1px solid var(--color-main-light);
+
+  @include wide-mobile() {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 .transaction-list__item-data:last-child {

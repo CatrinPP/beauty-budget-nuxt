@@ -35,13 +35,14 @@ function generateChartColors() {
   };
 }
 
-const chartStyle = generateChartColors();
+const diagramStyle = generateChartColors();
 </script>
 
 <template>
-  <figure class="pie-chart" :style="chartStyle">
+  <figure class="pie-chart">
     <h2 class="pie-chart__title">{{ title }}</h2>
-    <figcaption>
+    <div class="pie-chart__diagram" :style="diagramStyle" />
+    <figcaption class="pie-chart__caption">
       <ul class="pie-chart__list">
         <li v-for="[name, sum] in values" :key="name" class="pie-chart__list-item">
           {{ name }} {{ sum }}
@@ -54,21 +55,69 @@ const chartStyle = generateChartColors();
 <style scoped lang="scss">
 .pie-chart {
   position: relative;
-  width: 500px;
-  min-height: 350px;
+
+  box-sizing: border-box;
+  display: grid;
+  gap: 10px;
   margin: 0;
-  outline: 1px solid #ccc;
+  padding: $mobile-inner-gap;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  @include wide-mobile() {
+    grid-template-areas:
+      'title title'
+      'caption diagram';
+    grid-template-columns: 0.5fr minmax(240px, 1fr);
+    row-gap: 8px;
+  }
+
+  @include desktop() {
+    padding: $desktop-inner-gap;
+  }
 }
 
 .pie-chart__title {
   @include subtitle();
+  text-align: center;
+
+  @include wide-mobile() {
+    grid-area: title;
+  }
+}
+
+.pie-chart__caption {
+  align-self: center;
+
+  @include wide-mobile() {
+    grid-area: caption;
+  }
 }
 
 .pie-chart__list {
-  list-style: none;
+  display: grid;
+  gap: 4px;
+  padding: 4px 0;
+
+  @include reset-list();
 }
 
 .pie-chart__list-item {
+  @include reset-list-item();
   @include text(14px);
+}
+
+.pie-chart__diagram {
+  min-height: 300px;
+  min-width: 240px;
+
+  @include small-mobile() {
+    transform: scale(0.8);
+  }
+
+  @include wide-mobile() {
+    grid-area: diagram;
+  }
 }
 </style>

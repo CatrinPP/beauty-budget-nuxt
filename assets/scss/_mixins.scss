@@ -41,8 +41,14 @@
   }
 }
 
-@mixin mobile() {
-  @media (max-width: ($desktop-width - 1)) {
+@mixin wide-mobile() {
+  @media (min-width: $mobile-wide-width) {
+    @content;
+  }
+}
+
+@mixin small-mobile() {
+  @media (max-width: ($mobile-wide-width - 1)) {
     @content;
   }
 }

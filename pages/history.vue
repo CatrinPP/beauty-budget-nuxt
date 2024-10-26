@@ -5,7 +5,7 @@ const store = useTransactionsStore();
 </script>
 
 <template>
-  <div>
+  <div class="history-page">
     <TransactionList :transactions="store.transactions" />
   </div>
 </template>
