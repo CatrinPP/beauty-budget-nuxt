@@ -14,10 +14,11 @@
   }
 }
 
-@mixin text($size: 14px, $color: var(--color-main-dark)) {
+@mixin text($size: 14px, $weight: 400, $color: var(--color-main-dark)) {
   font-family: $font-main;
   font-size: $size;
   font-style: normal;
+  font-weight: $weight;
   color: $color;
   letter-spacing: 0.6px;
   line-height: 1.4;

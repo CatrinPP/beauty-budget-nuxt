@@ -27,6 +27,7 @@ watch(
       <HeaderLink :to="AppRoute.CHARTS" :title="PageTitle[AppRoute.CHARTS]" icon="chart" />
       <HeaderLink :to="AppRoute.SETTINGS" :title="PageTitle[AppRoute.SETTINGS]" icon="cog" />
     </nav>
+    <TransactionsBalance class="page-header__balance" />
     <h1 class="page-header__title">{{ title }}</h1>
   </header>
 </template>
@@ -58,5 +59,9 @@ watch(
   grid-auto-flow: column;
   align-items: center;
   justify-content: center;
+}
+
+.page-header__balance {
+  justify-self: end;
 }
 </style>

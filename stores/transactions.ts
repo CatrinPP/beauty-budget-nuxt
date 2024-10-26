@@ -60,6 +60,11 @@ export const useTransactionsStore = defineStore('transactionsStore', {
         },
         { total: 0, income: 0, outcome: 0 }
       ),
+    balance(): number {
+      return (
+        Math.abs(this.totalTransactionsSum.income) - Math.abs(this.totalTransactionsSum.outcome)
+      );
+    },
     incomeCategoriesSortedBySum() {
       return Object.entries(this.incomeCategories).sort(([, sum1], [, sum2]) => sum2 - sum1);
     },

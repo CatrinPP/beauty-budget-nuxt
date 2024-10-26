@@ -1,0 +1,28 @@
+<script setup lang="ts">
+const store = useTransactionsStore();
+</script>
+
+<template>
+  <p class="transactions-balance">
+    Текущий баланс:<span class="transactions-balance__amount">{{ store.balance || 0 }}</span>
+  </p>
+</template>
+
+<style scoped lang="scss">
+.transactions-balance {
+  display: flex;
+  align-items: baseline;
+  margin: 0;
+
+  @include text($weight: 600);
+
+  border-bottom: 4px solid var(--color-accent);
+}
+
+.transactions-balance__amount {
+  min-width: 20px;
+  padding-left: 10px;
+
+  text-align: end;
+}
+</style>

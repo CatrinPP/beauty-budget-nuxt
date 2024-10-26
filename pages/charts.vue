@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useTransactionsStore } from '~/stores/transactions';
 import type { IBarChartValue } from '~/types/chart';
 
 const store = useTransactionsStore();
