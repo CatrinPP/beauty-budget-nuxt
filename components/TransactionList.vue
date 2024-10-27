@@ -72,6 +72,10 @@ const { transactions, deleteTransaction } = defineProps<Props>();
   }
 }
 
+.transaction-list__item-data {
+  word-break: break-word;
+}
+
 .transaction-list__item-data:last-child {
   text-align: end;
 }

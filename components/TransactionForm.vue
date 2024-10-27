@@ -106,6 +106,8 @@ const handleSubmit = (evt: Event) => {
           type: 'number',
           step: 'any',
           required: true,
+          min: 0,
+          max: 999999999,
         }"
       />
       <UIInput

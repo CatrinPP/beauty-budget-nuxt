@@ -12,9 +12,11 @@ const store = useTransactionsStore();
 .transactions-balance {
   display: flex;
   align-items: baseline;
+  justify-content: end;
+  flex-wrap: wrap;
   margin: 0;
 
-  @include text(18px);
+  @include subtitle();
 }
 
 .transactions-balance__amount {

@@ -4,6 +4,8 @@
   box-sizing: border-box;
   padding: 11px;
 
+  @include text();
+
   background-color: white;
   border: 1px solid var(--color-border);
   border-radius: $ui-border-radius;
@@ -33,7 +35,11 @@
 @mixin subtitle() {
   margin: 0;
   padding: 0;
-  @include text(18px);
+  @include text(16px);
+
+  @include desktop() {
+    font-size: 18px;
+  }
 }
 
 @mixin desktop() {

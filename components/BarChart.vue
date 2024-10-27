@@ -101,6 +101,7 @@ const getHeightPercentage = (value: number) => {
   @include reset-list-item();
   width: 30px;
   height: 100%;
+  min-height: 1px;
 
   border-radius: 2px 2px 0 0;
   transition: height $transition;
