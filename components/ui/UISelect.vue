@@ -1,20 +1,27 @@
 <script setup lang="ts">
 import type { SelectHTMLAttributes } from 'vue';
-import { TransactionType } from '~/constants/transaction';
+import type { IOption } from '~/types/option';
 
 interface Props {
   selectProps: SelectHTMLAttributes;
+  options: IOption[];
 }
 
 const { selectProps } = defineProps<Props>();
 const model = defineModel<string>();
+const id = selectProps.id || useId();
 </script>
 
 <template>
-  <select v-model="model" class="ui-select" v-bind="selectProps">
-    <option disabled value="">Выберите тип</option>
-    <option :value="TransactionType.INCOME">+ / доходы</option>
-    <option :value="TransactionType.OUTCOME">- / расходы</option>
+  <select :id v-model="model" class="ui-select" v-bind="selectProps">
+    <option
+      v-for="option in options"
+      :key="option.value"
+      :disabled="option.disabled"
+      :value="option.value"
+    >
+      {{ option.label }}
+    </option>
   </select>
 </template>
 

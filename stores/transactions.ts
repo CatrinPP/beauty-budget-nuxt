@@ -47,6 +47,8 @@ export const useTransactionsStore = defineStore('transactionsStore', {
 
         return { ...result, [currentTransaction.category]: categorySum };
       }, {}),
+    categories: (state): string[] =>
+      Array.from(new Set(state.transactions.map((item) => item.category))),
     totalTransactionsSum: (state): ITotalTransactionSum =>
       state.transactions.reduce(
         (result: ITotalTransactionSum, currentTransaction: ITransaction) => {

@@ -3,8 +3,9 @@ import { ref } from 'vue';
 import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
 import type { ITransaction } from '~/types/transaction';
-import type { TransactionType } from '~/constants/transaction';
+import { TransactionType } from '~/constants/transaction';
 import { ButtonState } from '~/constants/button-state';
+import type { IOption } from '~/types/option';
 
 const INITIAL_CATEGORY = '';
 const INITIAL_TRANSACTION_TYPE = '';
@@ -18,6 +19,23 @@ const date = ref(INITIAL_DATE);
 const sum = ref(INITIAL_SUM);
 const state = ref<ButtonState>(INITIAL_STATE);
 const store = useTransactionsStore();
+const selectOptions: IOption[] = [
+  {
+    value: '',
+    label: 'Выберите тип',
+    disabled: true,
+  },
+  {
+    value: TransactionType.INCOME,
+    label: '+ / доходы',
+    disabled: false,
+  },
+  {
+    value: TransactionType.OUTCOME,
+    label: '- / расходы',
+    disabled: false,
+  },
+];
 
 const resetForm = () => {
   category.value = INITIAL_CATEGORY;
@@ -62,27 +80,26 @@ const handleSubmit = (evt: Event) => {
         v-model.trim="category"
         :input-props="{
           class: 'transaction-form__input',
-          id: 'transaction-category',
           disabled: state !== ButtonState.NORMAL,
           autocapitalize: 'sentences',
           placeholder: 'Категория',
           required: true,
         }"
+        :data-list-options="store.categories"
       />
       <UISelect
         v-model="transactionType"
         :select-props="{
           class: 'transaction-form__input',
-          id: 'transaction-type',
           disabled: state !== ButtonState.NORMAL,
           required: true,
         }"
+        :options="selectOptions"
       />
       <UIInput
         v-model="sum"
         :input-props="{
           class: 'transaction-form__input',
-          id: 'transaction-amount',
           disabled: state !== ButtonState.NORMAL,
           inputmode: 'numeric',
           placeholder: 'Сумма',
@@ -95,7 +112,6 @@ const handleSubmit = (evt: Event) => {
         v-model="date"
         :input-props="{
           class: 'transaction-form__input',
-          id: 'transaction-date',
           disabled: state !== ButtonState.NORMAL,
           placeholder: 'Дата',
           type: 'date',
