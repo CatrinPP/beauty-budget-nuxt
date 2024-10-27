@@ -20,7 +20,7 @@ function generateChartColors() {
     const valuePercentage = getValueGradientPercent(values[i][1]);
     const newColor = Math.floor(Math.random() * 256);
     lastPercent = lastPercent + valuePercentage;
-    result.push(`hsl(${newColor} ${lastPercent} ${100 - valuePercentage}%)`);
+    result.push(`hsl(${newColor} ${lastPercent}% ${100 - valuePercentage}%)`);
   }
 
   return result;
