@@ -55,7 +55,7 @@ const getHeightPercentage = (value: number) => {
     grid-template-areas:
       'title title'
       'caption diagram';
-    grid-template-columns: 0.5fr minmax(240px, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 
   @include desktop() {
@@ -81,7 +81,6 @@ const getHeightPercentage = (value: number) => {
 
   @include wide-mobile() {
     grid-area: diagram;
-    height: 300px;
   }
 }
 
@@ -89,8 +88,9 @@ const getHeightPercentage = (value: number) => {
   display: grid;
   align-items: end;
   justify-content: start;
-  gap: 8%;
+  gap: 20px;
   grid-auto-flow: column;
+
   height: 100%;
   width: 100%;
 

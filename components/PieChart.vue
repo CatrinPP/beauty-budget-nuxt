@@ -58,7 +58,7 @@ const diagramStyle = getDiagramStyle(diagramColors);
     <h2 class="pie-chart__title">{{ title }}</h2>
     <div class="pie-chart__diagram" :style="diagramStyle" />
     <figcaption class="pie-chart__caption">
-      <ul class="pie-chart__list">
+      <ul v-if="values.length" class="pie-chart__list">
         <li v-for="([name, sum], idx) in values" :key="name" class="pie-chart__list-item">
           <span
             class="pie-chart__list-item-indicator"
@@ -66,6 +66,7 @@ const diagramStyle = getDiagramStyle(diagramColors);
           />{{ name }} - {{ formatSum(sum) }}
         </li>
       </ul>
+      <span v-else class="pie-chart__caption-stub">Нет данных</span>
     </figcaption>
   </figure>
 </template>
@@ -111,6 +112,11 @@ const diagramStyle = getDiagramStyle(diagramColors);
   @include wide-mobile() {
     grid-area: caption;
   }
+}
+
+.pie-chart__caption-stub {
+  @include text();
+  text-align: center;
 }
 
 .pie-chart__list {
