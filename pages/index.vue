@@ -12,6 +12,7 @@ const store = useTransactionsStore();
       <TransactionList
         v-if="store.lastTransactions.length"
         :transactions="store.lastTransactions"
+        :delete-transaction="store.deleteTransaction"
       />
       <p v-else class="main-page__section-text">Нет данных</p>
     </section>
