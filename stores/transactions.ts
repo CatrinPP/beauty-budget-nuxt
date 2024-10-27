@@ -74,7 +74,7 @@ export const useTransactionsStore = defineStore('transactionsStore', {
   },
   actions: {
     fetch() {
-      this.transactions = getStorageStateItem('transactions');
+      this.transactions = getStorageStateItem('transactions') || [];
     },
     addTransaction(newTransaction: ITransaction) {
       const getIndexBySortedDate = (startIndex: number, endIndex: number): number => {
