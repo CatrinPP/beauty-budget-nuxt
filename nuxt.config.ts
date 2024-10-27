@@ -23,5 +23,12 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'ru',
+      },
+    },
+  },
   modules: ['@nuxt/eslint', '@pinia/nuxt'],
 });
