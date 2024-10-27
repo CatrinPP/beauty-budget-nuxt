@@ -45,7 +45,7 @@ const diagramStyle = generateChartColors();
     <figcaption class="pie-chart__caption">
       <ul class="pie-chart__list">
         <li v-for="[name, sum] in values" :key="name" class="pie-chart__list-item">
-          {{ name }} {{ sum }}
+          {{ name }} {{ formatSum(sum) }}
         </li>
       </ul>
     </figcaption>

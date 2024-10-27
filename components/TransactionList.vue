@@ -20,7 +20,7 @@ const { transactions, deleteTransaction } = defineProps<Props>();
       :class="{ 'transaction-list__item_editable': !!deleteTransaction }"
     >
       <span class="transaction-list__item-data">{{
-        `${TransactionSign[transaction.type]}${transaction.sum}`
+        `${TransactionSign[transaction.type]}${formatSum(transaction.sum)}`
       }}</span>
       <span class="transaction-list__item-data">{{ transaction.category }}</span>
       <span class="transaction-list__item-data">{{

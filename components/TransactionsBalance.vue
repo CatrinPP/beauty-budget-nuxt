@@ -4,7 +4,7 @@ const store = useTransactionsStore();
 
 <template>
   <p class="transactions-balance">
-    Текущий баланс:<span class="transactions-balance__amount">{{ store.balance || 0 }}</span>
+    Текущий баланс:<span class="transactions-balance__amount">{{ formatSum(store.balance) }}</span>
   </p>
 </template>
 

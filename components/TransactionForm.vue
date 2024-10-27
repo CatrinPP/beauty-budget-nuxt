@@ -18,7 +18,7 @@ const handleSubmit = (evt: Event) => {
     id: `T${date.value.replace('0', '')}${uuidv4()}`,
     category: category.value,
     date: date.value,
-    sum: sum.value,
+    sum: getSubunitsAmountFromMainCurrency(sum.value),
     type: selected.value as TransactionType,
   };
 

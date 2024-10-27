@@ -4,7 +4,7 @@ export interface ITransaction {
   id: string;
   category: string;
   date: string;
-  sum: number;
+  sum: number; // subunits
   type: TransactionType;
 }
 
