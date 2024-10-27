@@ -25,7 +25,7 @@ watch(
       <HeaderLink :to="AppRoute.ROOT" :title="PageTitle[AppRoute.ROOT]" icon="home" />
       <HeaderLink :to="AppRoute.HISTORY" :title="PageTitle[AppRoute.HISTORY]" icon="history" />
       <HeaderLink :to="AppRoute.CHARTS" :title="PageTitle[AppRoute.CHARTS]" icon="chart" />
-      <HeaderLink :to="AppRoute.SETTINGS" :title="PageTitle[AppRoute.SETTINGS]" icon="cog" />
+      <!-- <HeaderLink :to="AppRoute.SETTINGS" :title="PageTitle[AppRoute.SETTINGS]" icon="cog" /> -->
     </nav>
     <TransactionsBalance class="page-header__balance" />
     <h1 class="page-header__title">{{ title }}</h1>

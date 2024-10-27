@@ -14,9 +14,7 @@ const store = useTransactionsStore();
   align-items: baseline;
   margin: 0;
 
-  @include text($weight: 600);
-
-  border-bottom: 4px solid var(--color-accent);
+  @include text(18px);
 }
 
 .transactions-balance__amount {
