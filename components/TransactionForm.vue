@@ -55,6 +55,7 @@ const handleSubmit = (evt: Event) => {
           inputmode: 'numeric',
           placeholder: 'Сумма',
           type: 'number',
+          step: 'any',
           required: true,
         }"
       />

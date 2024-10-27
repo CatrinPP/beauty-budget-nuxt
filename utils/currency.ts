@@ -8,7 +8,7 @@ export function getSubunitsAmountFromMainCurrency(mainCurrencyAmount: number) {
 }
 
 export function formatSum(subunitsAmount: number, withSubunitsShown = true, withCurrencySign = true) {
-  const mainCurrencySum = getMainCurrencyAmountFromSubunits(subunitsAmount);
+  const mainCurrencySum = subunitsAmount / CURRENCY_SUBUNIT_COUNT;
   const options = withSubunitsShown
     ? {
         maximumFractionDigits: 2,
