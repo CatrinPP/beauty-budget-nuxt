@@ -8,7 +8,7 @@ const store = useTransactionsStore();
   <div class="main-page">
     <TransactionForm />
     <section class="main-page__section">
-      <h2 class="main-page__section-title">Последние транзакции</h2>
+      <h2 class="main-page__section-title">Последние добавленные записи</h2>
       <TransactionList
         v-if="store.lastTransactions.length"
         :transactions="store.lastTransactions"

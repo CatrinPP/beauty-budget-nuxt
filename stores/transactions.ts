@@ -13,7 +13,14 @@ export const useTransactionsStore = defineStore('transactionsStore', {
     transactions: [],
   }),
   getters: {
-    lastTransactions: (state) => state.transactions.slice(0, 3),
+    lastTransactions: (state) =>
+      [...state.transactions]
+        .sort(
+          (prevTransaction, nextTransaction) =>
+            dayjs(nextTransaction.created_at).valueOf() -
+            dayjs(prevTransaction.created_at).valueOf()
+        )
+        .slice(0, 3),
     incomeCategories: (state): IChartCategory =>
       state.transactions.reduce((result: IChartCategory, currentTransaction: ITransaction) => {
         if (currentTransaction.type !== TransactionType.INCOME) {

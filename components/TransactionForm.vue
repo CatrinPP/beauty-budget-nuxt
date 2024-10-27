@@ -37,6 +37,7 @@ const handleSubmit = (evt: Event) => {
 
   const newTransaction: ITransaction = {
     id: `T${date.value.replace('0', '')}${uuidv4()}`,
+    created_at: new Date().toString(),
     category: category.value,
     date: date.value,
     sum: getSubunitsAmountFromMainCurrency(sum.value || 0),
@@ -49,8 +50,8 @@ const handleSubmit = (evt: Event) => {
 
     setTimeout(() => {
       handleSuccess();
-    }, 1000);
-  }, 2000);
+    }, 400);
+  }, 1000);
 };
 </script>
 
