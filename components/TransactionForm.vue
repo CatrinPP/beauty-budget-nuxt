@@ -4,25 +4,53 @@ import dayjs from 'dayjs';
 import { v4 as uuidv4 } from 'uuid';
 import type { ITransaction } from '~/types/transaction';
 import type { TransactionType } from '~/constants/transaction';
+import { ButtonState } from '~/constants/button-state';
 
-const category = ref('');
-const selected = ref('');
-const date = ref(dayjs().format('YYYY-MM-DD'));
-const sum = ref();
+const INITIAL_CATEGORY = '';
+const INITIAL_TRANSACTION_TYPE = '';
+const INITIAL_DATE = dayjs().format('YYYY-MM-DD');
+const INITIAL_SUM = undefined;
+const INITIAL_STATE = ButtonState.NORMAL;
+
+const category = ref(INITIAL_CATEGORY);
+const transactionType = ref(INITIAL_TRANSACTION_TYPE);
+const date = ref(INITIAL_DATE);
+const sum = ref(INITIAL_SUM);
+const state = ref<ButtonState>(INITIAL_STATE);
 const store = useTransactionsStore();
+
+const resetForm = () => {
+  category.value = INITIAL_CATEGORY;
+  transactionType.value = INITIAL_TRANSACTION_TYPE;
+  date.value = INITIAL_DATE;
+  sum.value = INITIAL_SUM;
+};
+
+const handleSuccess = () => {
+  resetForm();
+  state.value = ButtonState.NORMAL;
+};
 
 const handleSubmit = (evt: Event) => {
   evt.preventDefault();
+  state.value = ButtonState.PROCESSING;
 
   const newTransaction: ITransaction = {
     id: `T${date.value.replace('0', '')}${uuidv4()}`,
     category: category.value,
     date: date.value,
-    sum: getSubunitsAmountFromMainCurrency(sum.value),
-    type: selected.value as TransactionType,
+    sum: getSubunitsAmountFromMainCurrency(sum.value || 0),
+    type: transactionType.value as TransactionType,
   };
 
-  store.addTransaction(newTransaction);
+  setTimeout(() => {
+    store.addTransaction(newTransaction);
+    state.value = ButtonState.SUCCESS;
+
+    setTimeout(() => {
+      handleSuccess();
+    }, 1000);
+  }, 2000);
 };
 </script>
 
@@ -34,16 +62,18 @@ const handleSubmit = (evt: Event) => {
         :input-props="{
           class: 'transaction-form__input',
           id: 'transaction-category',
+          disabled: state !== ButtonState.NORMAL,
           autocapitalize: 'sentences',
           placeholder: 'Категория',
           required: true,
         }"
       />
       <UISelect
-        v-model="selected"
+        v-model="transactionType"
         :select-props="{
           class: 'transaction-form__input',
           id: 'transaction-type',
+          disabled: state !== ButtonState.NORMAL,
           required: true,
         }"
       />
@@ -52,6 +82,7 @@ const handleSubmit = (evt: Event) => {
         :input-props="{
           class: 'transaction-form__input',
           id: 'transaction-amount',
+          disabled: state !== ButtonState.NORMAL,
           inputmode: 'numeric',
           placeholder: 'Сумма',
           type: 'number',
@@ -64,6 +95,7 @@ const handleSubmit = (evt: Event) => {
         :input-props="{
           class: 'transaction-form__input',
           id: 'transaction-date',
+          disabled: state !== ButtonState.NORMAL,
           placeholder: 'Дата',
           type: 'date',
           required: true,
@@ -71,7 +103,12 @@ const handleSubmit = (evt: Event) => {
       />
     </fieldset>
 
-    <UIButton element-class="transaction-form__button" text="Добавить" type="submit" />
+    <UIButton
+      element-class="transaction-form__button"
+      :state="state"
+      text="Добавить"
+      type="submit"
+    />
   </form>
 </template>
 
