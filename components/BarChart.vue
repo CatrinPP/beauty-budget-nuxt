@@ -30,7 +30,7 @@ const getHeightPercentage = (value: number) => {
     <figcaption class="bar-chart__caption">
       <ul class="bar-chart__list">
         <li v-for="[name, sum] in values" :key="name" class="bar-chart__list-item">
-          {{ name }} {{ formatSum(sum) }}
+          {{ name }} - {{ formatSum(sum) }}
         </li>
       </ul>
     </figcaption>
@@ -98,11 +98,12 @@ const getHeightPercentage = (value: number) => {
 }
 
 .bar-chart__diagram-item {
+  @include reset-list-item();
   width: 30px;
   height: 100%;
 
+  border-radius: 2px 2px 0 0;
   transition: height $transition;
-  @include reset-list-item();
 }
 
 .bar-chart__diagram-item:nth-child(2n - 1) {
@@ -132,5 +133,32 @@ const getHeightPercentage = (value: number) => {
 .bar-chart__list-item {
   @include reset-list-item();
   @include text(14px);
+
+  position: relative;
+
+  box-sizing: border-box;
+  padding-left: 20px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 10px;
+    height: 10px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+  }
+
+  &:nth-child(2n - 1)::before {
+    background-color: green;
+  }
+
+  &:nth-child(2n)::before {
+    background-color: blue;
+  }
 }
 </style>

@@ -13,16 +13,30 @@ function getValueGradientPercent(value: number): number {
 }
 
 function generateChartColors() {
-  let gradient = '';
   let lastPercent = 0;
+  const result = [];
 
   for (let i = 0; i < valuesCount; i++) {
     const valuePercentage = getValueGradientPercent(values[i][1]);
     const newColor = Math.floor(Math.random() * 256);
     lastPercent = lastPercent + valuePercentage;
+    result.push(`hsl(${newColor} ${lastPercent} ${100 - valuePercentage}%)`);
+  }
+
+  return result;
+}
+
+function getDiagramStyle(colors: string[]) {
+  let gradient = '';
+  let lastPercent = 0;
+
+  for (let i = 0; i < valuesCount; i++) {
+    const valuePercentage = getValueGradientPercent(values[i][1]);
+    const newColor = colors[i];
+    lastPercent = lastPercent + valuePercentage;
     gradient =
       gradient +
-      `hsl(${newColor} ${lastPercent} ${100 - valuePercentage}%) 0, hsl(${newColor} ${lastPercent} ${100 - valuePercentage}%) ${i === valuesCount - 1 ? '100%' : `${lastPercent}%, `}`;
+      `${newColor} 0, ${newColor} ${i === valuesCount - 1 ? '100%' : `${lastPercent}%, `}`;
   }
 
   return {
@@ -35,7 +49,8 @@ function generateChartColors() {
   };
 }
 
-const diagramStyle = generateChartColors();
+const diagramColors = generateChartColors();
+const diagramStyle = getDiagramStyle(diagramColors);
 </script>
 
 <template>
@@ -44,8 +59,11 @@ const diagramStyle = generateChartColors();
     <div class="pie-chart__diagram" :style="diagramStyle" />
     <figcaption class="pie-chart__caption">
       <ul class="pie-chart__list">
-        <li v-for="[name, sum] in values" :key="name" class="pie-chart__list-item">
-          {{ name }} {{ formatSum(sum) }}
+        <li v-for="([name, sum], idx) in values" :key="name" class="pie-chart__list-item">
+          <span
+            class="pie-chart__list-item-indicator"
+            :style="{ background: diagramColors[idx] }"
+          />{{ name }} - {{ formatSum(sum) }}
         </li>
       </ul>
     </figcaption>
@@ -106,6 +124,23 @@ const diagramStyle = generateChartColors();
 .pie-chart__list-item {
   @include reset-list-item();
   @include text(14px);
+  position: relative;
+
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+
+.pie-chart__list-item-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 10px;
+  height: 10px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
 }
 
 .pie-chart__diagram {

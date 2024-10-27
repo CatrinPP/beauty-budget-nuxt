@@ -38,7 +38,7 @@ const barChartValues: IBarChartValue[] = [
   margin: 0 auto;
 
   @include wide-mobile() {
-    max-width: 500px;
+    max-width: 690px;
   }
 
   @include desktop() {
