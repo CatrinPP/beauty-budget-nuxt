@@ -106,6 +106,11 @@ export const useTransactionsStore = defineStore('transactionsStore', {
       }
       this.updateStorageState(this.transactions);
     },
+    deleteTransaction(id: string) {
+      const newTransactions = this.transactions.filter((transaction) => transaction.id !== id);
+      this.transactions = newTransactions;
+      this.updateStorageState(this.transactions);
+    },
     updateStorageState(updatedTransactions: ITransaction[]) {
       setStorageStateItem('transactions', updatedTransactions);
     },

@@ -5,14 +5,20 @@ import type { ITransaction } from '~/types/transaction';
 
 interface Props {
   transactions: ITransaction[];
+  deleteTransaction?: (id: string) => void;
 }
 
-const { transactions } = defineProps<Props>();
+const { transactions, deleteTransaction } = defineProps<Props>();
 </script>
 
 <template>
   <ul class="transaction-list">
-    <li v-for="transaction in transactions" :key="transaction.id" class="transaction-list__item">
+    <li
+      v-for="transaction in transactions"
+      :key="transaction.id"
+      class="transaction-list__item"
+      :class="{ 'transaction-list__item_editable': !!deleteTransaction }"
+    >
       <span class="transaction-list__item-data">{{
         `${TransactionSign[transaction.type]}${transaction.sum}`
       }}</span>
@@ -20,6 +26,21 @@ const { transactions } = defineProps<Props>();
       <span class="transaction-list__item-data">{{
         dayjs(transaction.date).format('DD.MM.YYYY')
       }}</span>
+      <button
+        v-if="!!deleteTransaction"
+        class="transaction-list__item-button"
+        @click="deleteTransaction(transaction.id)"
+      >
+        <svg
+          class="transaction-list__item-button-icon"
+          viewBox="-1 0 24 24"
+          width="24"
+          height="24"
+          title="Удалить транзакцию"
+        >
+          <use :href="`/sprite.svg#cross`" />
+        </svg>
+      </button>
     </li>
   </ul>
 </template>
@@ -34,7 +55,12 @@ const { transactions } = defineProps<Props>();
   display: grid;
   grid-template-columns: minmax(80px, 30%) 1fr minmax(80px, 30%);
   gap: $mobile-inner-gap;
+  align-items: center;
   padding: 14px 0;
+
+  &_editable {
+    grid-template-columns: minmax(80px, 30%) 1fr minmax(80px, 30%) 24px;
+  }
 
   @include text();
 
@@ -48,5 +74,29 @@ const { transactions } = defineProps<Props>();
 
 .transaction-list__item-data:last-child {
   text-align: end;
+}
+
+.transaction-list__item-button {
+  @include reset-button();
+
+  &:hover {
+    .transaction-list__item-button-icon {
+      opacity: 0.85;
+    }
+  }
+
+  &:active {
+    .transaction-list__item-button-icon {
+      opacity: 0.95;
+    }
+  }
+}
+
+.transaction-list__item-button-icon {
+  height: 24px;
+  width: 24px;
+
+  fill: var(--color-text);
+  transition: opacity $transition;
 }
 </style>

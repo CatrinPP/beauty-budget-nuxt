@@ -6,6 +6,28 @@ const store = useTransactionsStore();
 
 <template>
   <div class="history-page">
-    <TransactionList :transactions="store.transactions" />
+    <TransactionList
+      v-if="store.transactions.length"
+      :delete-transaction="store.deleteTransaction"
+      :transactions="store.transactions"
+    />
+    <p v-else class="history-page__text">Нет данных</p>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.history-page {
+  display: grid;
+  align-content: start;
+  gap: $mobile-inner-gap;
+
+  @include desktop() {
+    gap: $desktop-inner-gap;
+  }
+}
+
+.history-page__text {
+  @include text();
+  text-align: center;
+}
+</style>
