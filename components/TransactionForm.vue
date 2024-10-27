@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import dayjs from 'dayjs';
+import { v4 as uuidv4 } from 'uuid';
 import type { ITransaction } from '~/types/transaction';
 import type { TransactionType } from '~/constants/transaction';
 
-const id = useId();
 const category = ref('');
 const selected = ref('');
 const date = ref(dayjs().format('YYYY-MM-DD'));
@@ -15,7 +15,7 @@ const handleSubmit = (evt: Event) => {
   evt.preventDefault();
 
   const newTransaction: ITransaction = {
-    id: `T${date.value}${id}`,
+    id: `T${date.value.replace('0', '')}${uuidv4()}`,
     category: category.value,
     date: date.value,
     sum: sum.value,
