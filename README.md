@@ -11,6 +11,9 @@
 ```bash
 # yarn
 yarn install
+
+# npm
+npm install
 ```
 
 ## Development Server
@@ -20,6 +23,9 @@ yarn install
 ```bash
 # yarn
 yarn dev
+
+# npm
+npm run dev
 ```
 
 ## Production
@@ -29,6 +35,9 @@ yarn dev
 ```bash
 # yarn
 yarn build
+
+# npm
+npm run build
 ```
 
 Локальный предпросмотр production сборки:
@@ -36,6 +45,9 @@ yarn build
 ```bash
 # yarn
 yarn preview
+
+# npm
+npm run preview
 ```
 
 ## TechStack
