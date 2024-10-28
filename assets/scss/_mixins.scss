@@ -48,7 +48,7 @@
   font: inherit;
   line-height: normal;
   text-align: unset;
-  
+
   background: none;
   border: 0;
   cursor: pointer;
@@ -86,4 +86,38 @@
   &:hover:not(:disabled) {
     border-color: var(--color-border-hover);
   }
+}
+
+@mixin chart() {
+  position: relative;
+
+  box-sizing: border-box;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: $mobile-inner-gap;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  @include desktop() {
+    padding: $desktop-inner-gap;
+  }
+}
+
+@mixin chart-caption-list() {
+  @include reset-list();
+  display: grid;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+@mixin chart-caption-item() {
+  position: relative;
+
+  @include reset-list-item();
+  box-sizing: border-box;
+  padding-left: 20px;
+
+  @include text(14px);
 }

@@ -80,16 +80,7 @@ const diagramStyle = getDiagramStyle(diagramColors);
 
 <style scoped lang="scss">
 .pie-chart {
-  position: relative;
-
-  box-sizing: border-box;
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: $mobile-inner-gap;
-
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  @include chart();
 
   @include wide-mobile() {
     grid-template-areas:
@@ -97,10 +88,6 @@ const diagramStyle = getDiagramStyle(diagramColors);
       'caption diagram';
     grid-template-columns: 0.5fr minmax(240px, 1fr);
     row-gap: 8px;
-  }
-
-  @include desktop() {
-    padding: $desktop-inner-gap;
   }
 }
 
@@ -127,20 +114,11 @@ const diagramStyle = getDiagramStyle(diagramColors);
 }
 
 .pie-chart__list {
-  @include reset-list();
-  display: grid;
-  gap: 4px;
-  padding: 4px 0;
+  @include chart-caption-list();
 }
 
 .pie-chart__list-item {
-  position: relative;
-  
-  @include reset-list-item();
-  box-sizing: border-box;
-  padding-left: 20px;
-  
-  @include text(14px);
+  @include chart-caption-item();
 }
 
 .pie-chart__list-item-indicator {

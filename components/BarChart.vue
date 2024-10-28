@@ -39,27 +39,14 @@ const getHeightPercentage = (value: number) => {
 
 <style scoped lang="scss">
 .bar-chart {
-  position: relative;
-
-  box-sizing: border-box;
-  display: grid;
-  gap: 10px;
+  @include chart();
   min-height: 350px;
-  margin: 0;
-  padding: $mobile-inner-gap;
-
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
 
   @include wide-mobile() {
     grid-template-areas:
       'title title'
       'caption diagram';
     grid-template-columns: 1fr 1fr;
-  }
-
-  @include desktop() {
-    padding: $desktop-inner-gap;
   }
 }
 
@@ -85,16 +72,14 @@ const getHeightPercentage = (value: number) => {
 }
 
 .bar-chart__diagram-items {
+  @include reset-list();
   display: grid;
   align-items: end;
   justify-content: start;
   gap: 20px;
   grid-auto-flow: column;
-
   height: 100%;
   width: 100%;
-
-  @include reset-list();
 }
 
 .bar-chart__diagram-item {
@@ -124,20 +109,11 @@ const getHeightPercentage = (value: number) => {
 }
 
 .bar-chart__list {
-  @include reset-list();
-  display: grid;
-  gap: 4px;
-  padding: 4px 0;
+  @include chart-caption-list();
 }
 
 .bar-chart__list-item {
-  position: relative;
-  
-  @include reset-list-item();
-  box-sizing: border-box;
-  padding-left: 20px;
-
-  @include text(14px);
+  @include chart-caption-item();
 
   &::before {
     content: '';
