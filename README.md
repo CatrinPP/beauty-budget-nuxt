@@ -1,75 +1,58 @@
-# Nuxt 3 Minimal Starter
+# Beauty Budget Manager App
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Веб интерфейс для управления личным бюджетом.
 
 ## Setup
 
-Make sure to install the dependencies:
+Установка зависимостей
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
 # yarn
 yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
 
-Start the development server on `http://localhost:3000`:
+Запуск дев сервера на `http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
 # yarn
 yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
 
-Build the application for production:
+Собрать production сборку:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
 # yarn
 yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Локальный предпросмотр production сборки:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
 # yarn
 yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## TechStack
+
+Фреймворк - [NUXT v3](https://nuxt.com/docs/getting-started/introduction)\
+Использован фреймворк, позволяющий создавать реактивный SPA, с заложенной модульностью и универсальностью использования для возможности масштабирования и имеющую готовую структуру и набор инструментов для удобного DX.
+
+State Manager - [Pinia](https://pinia.vuejs.org)\
+Рекомендован командой разработчиков Vue/Nuxt.
+
+Стилизация - CSS / SCSS\
+С помощью CSS заданы глобальные переменные и стили. SCSS использован для оптимизированной работы по переиспользованию стилей и возможностью применить функции инструмента в дальнейшем масштабировании.
+
+Typescript \
+Добавляет типизирования для быстрого выявления ошибок на этапе разработки и при масштабировании приложения.
+
+Линтеры \
+Использован Eslint, позволяющий выявить проблемные шаблоны. Prettier - для автоформатирования.
+
+Другие библиотеки\
+[Dayjs](https://day.js.org/docs/en/installation/installation) для удобной работы с датами\
+[UUID](https://www.npmjs.com/package/uuid) для генерации уникального id
