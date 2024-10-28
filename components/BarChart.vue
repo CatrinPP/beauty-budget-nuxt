@@ -78,8 +78,8 @@ const getHeightPercentage = (value: number) => {
   justify-content: start;
   gap: 20px;
   grid-auto-flow: column;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 .bar-chart__diagram-item {
@@ -93,11 +93,11 @@ const getHeightPercentage = (value: number) => {
 }
 
 .bar-chart__diagram-item:nth-child(2n - 1) {
-  background-color: green;
+  background-color: $color-income;
 }
 
 .bar-chart__diagram-item:nth-child(2n) {
-  background-color: blue;
+  background-color: $color-outcome;
 }
 
 .bar-chart__caption {
@@ -130,11 +130,11 @@ const getHeightPercentage = (value: number) => {
   }
 
   &:nth-child(2n - 1)::before {
-    background-color: green;
+    background-color: $color-income;
   }
 
   &:nth-child(2n)::before {
-    background-color: blue;
+    background-color: $color-outcome;
   }
 }
 </style>

@@ -12,14 +12,7 @@ const INITIAL_TRANSACTION_TYPE = '';
 const INITIAL_DATE = dayjs().format('YYYY-MM-DD');
 const INITIAL_SUM = undefined;
 const INITIAL_STATE = ButtonState.NORMAL;
-
-const category = ref(INITIAL_CATEGORY);
-const transactionType = ref(INITIAL_TRANSACTION_TYPE);
-const date = ref(INITIAL_DATE);
-const sum = ref(INITIAL_SUM);
-const state = ref<ButtonState>(INITIAL_STATE);
-const store = useTransactionsStore();
-const selectOptions: IOption[] = [
+const SELECT_OPTIONS: IOption[] = [
   {
     value: '',
     label: 'Выберите тип',
@@ -36,6 +29,13 @@ const selectOptions: IOption[] = [
     disabled: false,
   },
 ];
+
+const category = ref<string>(INITIAL_CATEGORY);
+const transactionType = ref<TransactionType | ''>(INITIAL_TRANSACTION_TYPE);
+const date = ref<string>(INITIAL_DATE);
+const sum = ref<number | undefined>(INITIAL_SUM);
+const state = ref<ButtonState>(INITIAL_STATE);
+const store = useTransactionsStore();
 
 const resetForm = () => {
   category.value = INITIAL_CATEGORY;
@@ -59,9 +59,10 @@ const handleSubmit = (evt: Event) => {
     category: category.value,
     date: date.value,
     sum: getSubunitsAmountFromMainCurrency(sum.value || 0),
-    type: transactionType.value as TransactionType,
+    type: transactionType.value || TransactionType.INCOME,
   };
 
+  // mock state animation
   setTimeout(() => {
     store.addTransaction(newTransaction);
     state.value = ButtonState.SUCCESS;
@@ -82,7 +83,6 @@ const handleSubmit = (evt: Event) => {
           class: 'transaction-form__input',
           ['aria-label']: 'Категория',
           disabled: state !== ButtonState.NORMAL,
-          autocapitalize: 'sentences',
           placeholder: 'Категория',
           required: true,
         }"
@@ -96,7 +96,7 @@ const handleSubmit = (evt: Event) => {
           disabled: state !== ButtonState.NORMAL,
           required: true,
         }"
-        :options="selectOptions"
+        :options="SELECT_OPTIONS"
       />
       <UIInput
         v-model="sum"

@@ -98,7 +98,7 @@
   padding: $mobile-inner-gap;
 
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: $ui-border-radius;
 
   @include desktop() {
     padding: $desktop-inner-gap;
