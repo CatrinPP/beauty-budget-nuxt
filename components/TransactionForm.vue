@@ -69,7 +69,7 @@ const handleSubmit = (evt: Event) => {
     setTimeout(() => {
       handleSuccess();
     }, 400);
-  }, 1000);
+  }, 500);
 };
 </script>
 
@@ -80,6 +80,7 @@ const handleSubmit = (evt: Event) => {
         v-model.trim="category"
         :input-props="{
           class: 'transaction-form__input',
+          ['aria-label']: 'Категория',
           disabled: state !== ButtonState.NORMAL,
           autocapitalize: 'sentences',
           placeholder: 'Категория',
@@ -91,6 +92,7 @@ const handleSubmit = (evt: Event) => {
         v-model="transactionType"
         :select-props="{
           class: 'transaction-form__input',
+          ['aria-label']: 'Тип записи',
           disabled: state !== ButtonState.NORMAL,
           required: true,
         }"
@@ -100,6 +102,7 @@ const handleSubmit = (evt: Event) => {
         v-model="sum"
         :input-props="{
           class: 'transaction-form__input',
+          ['aria-label']: 'Сумма',
           disabled: state !== ButtonState.NORMAL,
           inputmode: 'numeric',
           placeholder: 'Сумма',
@@ -114,6 +117,7 @@ const handleSubmit = (evt: Event) => {
         v-model="date"
         :input-props="{
           class: 'transaction-form__input',
+          ['aria-label']: 'Дата',
           disabled: state !== ButtonState.NORMAL,
           placeholder: 'Дата',
           type: 'date',
@@ -125,6 +129,7 @@ const handleSubmit = (evt: Event) => {
     <UIButton
       element-class="transaction-form__button"
       :state="state"
+      :aria-label="ButtonState.NORMAL ? 'Добавить запись' : 'Запись добавляется'"
       text="Добавить"
       type="submit"
     />

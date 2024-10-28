@@ -35,6 +35,7 @@ const handleDeleteButtonClick = (transactionId: string) => {
       <button
         v-if="!!deleteTransaction"
         class="transaction-list__item-button"
+        aria-label="Удалить запись"
         @click="handleDeleteButtonClick(transaction.id)"
       >
         <svg

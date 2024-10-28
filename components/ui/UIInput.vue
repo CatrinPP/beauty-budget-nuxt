@@ -14,7 +14,7 @@ const listId = `${id}-list`;
 
 <template>
   <!-- prettier-ignore -->
-  <input :id v-model="model" :list="listId" class="ui-input" v-bind="inputProps" >
+  <input :id v-model="model" :list="listId" class="ui-input" :class="{'ui-input_with-datalist': !!dataListOptions}" v-bind="inputProps" >
   <datalist v-if="dataListOptions" :id="listId">
     <option v-for="option in dataListOptions" :key="option" :value="option" />
   </datalist>

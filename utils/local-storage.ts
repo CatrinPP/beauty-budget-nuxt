@@ -1,6 +1,6 @@
 import type { IStorageState } from '~/types/storage-state';
 
-const APP_STORAGE_KEY = 'bb-nuxt';
+const APP_STORAGE_KEY = 'beauty-budget-n1';
 
 function getStorageValue() {
   const value = localStorage.getItem(APP_STORAGE_KEY);
