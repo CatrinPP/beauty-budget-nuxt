@@ -10,7 +10,7 @@ const { to, title, icon } = defineProps<Props>();
 
 <template>
   <NuxtLink class="header-link" active-class="header-link_active" :to :title>
-    <svg class="header-link__icon" viewBox="-2 0 34 34" width="34" height="34" :title>
+    <svg class="header-link__icon" viewBox="-2 0 34 34" width="34" height="34" role="presentation">
       <use :href="`/sprite.svg#${icon}`" />
     </svg>
   </NuxtLink>

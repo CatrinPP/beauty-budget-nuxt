@@ -2,8 +2,8 @@
 import { AppRoute } from '~/constants/app-route';
 
 const PageTitle = {
-  [AppRoute.ROOT]: 'Добавить запись',
-  [AppRoute.HISTORY]: 'Список транзакций',
+  [AppRoute.ROOT]: 'Добавить запись в бюджет',
+  [AppRoute.HISTORY]: 'Список всех записей',
   [AppRoute.CHARTS]: 'Графики',
 };
 

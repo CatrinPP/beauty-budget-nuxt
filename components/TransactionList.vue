@@ -43,7 +43,7 @@ const handleDeleteButtonClick = (transactionId: string) => {
           viewBox="-1 0 24 24"
           width="24"
           height="24"
-          title="Удалить транзакцию"
+          role="presentation"
         >
           <use :href="`/sprite.svg#cross`" />
         </svg>
