@@ -9,6 +9,12 @@ interface Props {
 }
 
 const { transactions, deleteTransaction } = defineProps<Props>();
+
+const handleDeleteButtonClick = (transactionId: string) => {
+  if (window.confirm('Удалить запись?') && typeof deleteTransaction === 'function') {
+    deleteTransaction(transactionId);
+  }
+};
 </script>
 
 <template>
@@ -29,7 +35,7 @@ const { transactions, deleteTransaction } = defineProps<Props>();
       <button
         v-if="!!deleteTransaction"
         class="transaction-list__item-button"
-        @click="deleteTransaction(transaction.id)"
+        @click="handleDeleteButtonClick(transaction.id)"
       >
         <svg
           class="transaction-list__item-button-icon"
