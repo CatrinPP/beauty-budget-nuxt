@@ -131,7 +131,7 @@ const handleSubmit = (evt: Event) => {
   </form>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .transaction-form {
   display: grid;
   gap: $mobile-inner-gap;
@@ -150,8 +150,13 @@ const handleSubmit = (evt: Event) => {
   border: none;
 
   @include desktop() {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.transaction-form__input {
+  appearance: none;
+  min-width: calc(100% - 16px);
 }
 
 .transaction-form__button {
