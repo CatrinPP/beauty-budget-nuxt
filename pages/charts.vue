@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import type { IBarChartValue } from '~/types/chart';
 
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - Графики` : 'Графики';
+  },
+});
+
 const store = useTransactionsStore();
 const barChartValues: IBarChartValue[] = [
   ['Доходы', store.totalTransactionsSum.income],

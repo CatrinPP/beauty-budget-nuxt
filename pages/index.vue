@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useTransactionsStore } from '~/stores/transactions';
 
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - Добавить новую запись` : 'Добавить новую запись';
+  },
+});
+
 const store = useTransactionsStore();
 </script>
 

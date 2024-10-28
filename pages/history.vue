@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { useTransactionsStore } from '~/stores/transactions';
 
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - Список всех записей` : 'Список всех записей';
+  },
+});
+
 const store = useTransactionsStore();
 </script>
 

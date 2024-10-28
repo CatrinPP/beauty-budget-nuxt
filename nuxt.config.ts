@@ -29,6 +29,14 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'ru',
       },
+      title: 'Beauty Budget Manager',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'Веб приложение для управления личным бюджетом - просмотр баланса, добавление записей по расходам и доходам, аналитика на графиках.',
+        },
+      ],
     },
   },
   modules: ['@nuxt/eslint', '@pinia/nuxt'],
