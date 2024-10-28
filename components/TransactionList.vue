@@ -65,13 +65,13 @@ const handleDeleteButtonClick = (transactionId: string) => {
   align-items: center;
   padding: 14px 0;
 
-  &_editable {
-    grid-template-columns: minmax(80px, 30%) 1fr minmax(80px, 30%) 24px;
-  }
-
   @include text();
 
   border-bottom: 1px solid var(--color-main-light);
+
+  &_editable {
+    grid-template-columns: minmax(80px, 30%) 1fr minmax(80px, 30%) 24px;
+  }
 
   @include wide-mobile() {
     padding-left: 30px;

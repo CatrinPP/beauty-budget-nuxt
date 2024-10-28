@@ -160,8 +160,8 @@ const handleSubmit = (evt: Event) => {
 }
 
 .transaction-form__input {
-  appearance: none;
   min-width: calc(100% - 16px);
+  appearance: none;
 }
 
 .transaction-form__button {

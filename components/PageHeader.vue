@@ -43,8 +43,8 @@ watch(
 }
 
 .page-header__title {
-  @include text(18px);
   margin: 0;
+  @include text(18px);
 
   @include desktop() {
     font-size: 24px;

@@ -38,8 +38,8 @@
   box-shadow: $box-shadow;
 
   @include wide-mobile() {
-    border-radius: 24px;
     padding: $mobile-outer-gap;
+    border-radius: 24px;
   }
 
   @include desktop() {

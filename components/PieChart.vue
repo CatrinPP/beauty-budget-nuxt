@@ -127,20 +127,20 @@ const diagramStyle = getDiagramStyle(diagramColors);
 }
 
 .pie-chart__list {
+  @include reset-list();
   display: grid;
   gap: 4px;
   padding: 4px 0;
-
-  @include reset-list();
 }
 
 .pie-chart__list-item {
-  @include reset-list-item();
-  @include text(14px);
   position: relative;
-
+  
+  @include reset-list-item();
   box-sizing: border-box;
   padding-left: 20px;
+  
+  @include text(14px);
 }
 
 .pie-chart__list-item-indicator {
