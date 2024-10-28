@@ -8,19 +8,26 @@ interface Props {
 const { title, total, values } = defineProps<Props>();
 const valuesCount = values.length;
 
+function getValueCharSum(value: string): number {
+  let charResult = 0;
+
+  for (let i = 0; i < value.length; i++) {
+    charResult += value.charCodeAt(i);
+  }
+
+  return charResult;
+}
+
 function getValueGradientPercent(value: number): number {
   return Math.floor((value * 100) / total);
 }
 
 function generateChartColors() {
-  let lastPercent = 0;
   const result = [];
 
   for (let i = 0; i < valuesCount; i++) {
-    const valuePercentage = getValueGradientPercent(values[i][1]);
-    const newColor = Math.floor(Math.random() * 256);
-    lastPercent = lastPercent + valuePercentage;
-    result.push(`hsl(${newColor} ${lastPercent}% ${100 - valuePercentage}%)`);
+    const newColor = Math.floor((getValueCharSum(values[i][0]) % 100) * 100 * 256);
+    result.push(`hsl(${newColor} 50% 50%)`);
   }
 
   return result;
