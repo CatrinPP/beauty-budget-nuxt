@@ -90,7 +90,7 @@ export const useTransactionsStore = defineStore('transactionsStore', {
         let index = startIndex;
 
         if (
-          startIndex === endIndex ||
+          (startIndex === endIndex && endIndex !== 0) ||
           dayjs(newTransaction.date).isAfter(dayjs(this.transactions[startIndex].date)) ||
           newTransaction.date === this.transactions[startIndex].date
         ) {
