@@ -19,19 +19,19 @@ watch(
 </script>
 
 <template>
-  <header class="page-header">
-    <nav class="page-header__nav">
-      <HeaderLink :to="AppRoute.ROOT" :title="PageTitle[AppRoute.ROOT]" icon="home" />
-      <HeaderLink :to="AppRoute.HISTORY" :title="PageTitle[AppRoute.HISTORY]" icon="history" />
-      <HeaderLink :to="AppRoute.CHARTS" :title="PageTitle[AppRoute.CHARTS]" icon="chart" />
+  <header class="header">
+    <nav class="header__nav">
+      <PageHeaderLink :to="AppRoute.ROOT" :title="PageTitle[AppRoute.ROOT]" icon="home" />
+      <PageHeaderLink :to="AppRoute.HISTORY" :title="PageTitle[AppRoute.HISTORY]" icon="history" />
+      <PageHeaderLink :to="AppRoute.CHARTS" :title="PageTitle[AppRoute.CHARTS]" icon="chart" />
     </nav>
-    <TransactionsBalance class="page-header__balance" />
-    <h1 class="page-header__title">{{ title }}</h1>
+    <TransactionsBalance class="header__balance" />
+    <h1 class="header__title">{{ title }}</h1>
   </header>
 </template>
 
 <style scoped lang="scss">
-.page-header {
+.header {
   display: grid;
   gap: $mobile-outer-gap;
   align-content: start;
@@ -42,7 +42,7 @@ watch(
   }
 }
 
-.page-header__title {
+.header__title {
   margin: 0;
   @include text(18px);
 
@@ -51,7 +51,7 @@ watch(
   }
 }
 
-.page-header__nav {
+.header__nav {
   display: grid;
   gap: 20px;
   grid-auto-flow: column;
@@ -59,7 +59,7 @@ watch(
   justify-content: center;
 }
 
-.page-header__balance {
+.header__balance {
   justify-self: end;
 }
 </style>

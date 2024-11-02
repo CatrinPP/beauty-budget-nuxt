@@ -13,7 +13,7 @@ const id = selectProps.id || useId();
 </script>
 
 <template>
-  <select :id v-model="model" class="ui-select" v-bind="selectProps">
+  <select :id v-model="model" class="select" v-bind="selectProps">
     <option
       v-for="option in options"
       :key="option.value"
@@ -26,7 +26,7 @@ const id = selectProps.id || useId();
 </template>
 
 <style lang="scss" scoped>
-.ui-select {
+.select {
   @include input();
   padding-right: 30px;
 

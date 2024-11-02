@@ -61,25 +61,25 @@ const diagramStyle = getDiagramStyle(diagramColors);
 </script>
 
 <template>
-  <figure class="pie-chart">
-    <h2 class="pie-chart__title">{{ title }}</h2>
-    <div class="pie-chart__diagram" :style="diagramStyle" />
-    <figcaption class="pie-chart__caption">
-      <ul v-if="values.length" class="pie-chart__list">
-        <li v-for="([name, sum], idx) in values" :key="name" class="pie-chart__list-item">
-          <span
-            class="pie-chart__list-item-indicator"
-            :style="{ background: diagramColors[idx] }"
-          />{{ name }} - {{ formatSum(sum) }}
+  <figure class="chart">
+    <h2 class="chart__title">{{ title }}</h2>
+    <div class="chart__diagram" :style="diagramStyle" />
+    <figcaption class="chart__caption">
+      <ul v-if="values.length" class="chart__list">
+        <li v-for="([name, sum], idx) in values" :key="name" class="chart__list-item">
+          <span class="chart__list-item-indicator" :style="{ background: diagramColors[idx] }" />{{
+            name
+          }}
+          - {{ formatSum(sum) }}
         </li>
       </ul>
-      <span v-else class="pie-chart__caption-stub">Нет данных</span>
+      <span v-else class="chart__caption-stub">Нет данных</span>
     </figcaption>
   </figure>
 </template>
 
 <style scoped lang="scss">
-.pie-chart {
+.chart {
   @include chart();
 
   @include wide-mobile() {
@@ -91,7 +91,7 @@ const diagramStyle = getDiagramStyle(diagramColors);
   }
 }
 
-.pie-chart__title {
+.chart__title {
   @include subtitle();
   text-align: center;
 
@@ -100,7 +100,7 @@ const diagramStyle = getDiagramStyle(diagramColors);
   }
 }
 
-.pie-chart__caption {
+.chart__caption {
   align-self: center;
 
   @include wide-mobile() {
@@ -108,20 +108,20 @@ const diagramStyle = getDiagramStyle(diagramColors);
   }
 }
 
-.pie-chart__caption-stub {
+.chart__caption-stub {
   @include text();
   text-align: center;
 }
 
-.pie-chart__list {
+.chart__list {
   @include chart-caption-list();
 }
 
-.pie-chart__list-item {
+.chart__list-item {
   @include chart-caption-item();
 }
 
-.pie-chart__list-item-indicator {
+.chart__list-item-indicator {
   position: absolute;
   left: 0;
   top: 50%;
@@ -134,7 +134,7 @@ const diagramStyle = getDiagramStyle(diagramColors);
   border-radius: 2px;
 }
 
-.pie-chart__diagram {
+.chart__diagram {
   min-height: 300px;
   min-width: 240px;
 

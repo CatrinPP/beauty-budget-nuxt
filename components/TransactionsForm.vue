@@ -75,12 +75,12 @@ const handleSubmit = (evt: Event) => {
 </script>
 
 <template>
-  <form class="transaction-form" method="post" @submit.prevent="handleSubmit">
-    <fieldset class="transaction-form__fieldset" name="transaction">
+  <form class="transactions-form" method="post" @submit.prevent="handleSubmit">
+    <fieldset class="transactions-form__fieldset" name="transaction">
       <UIInput
         v-model.trim="category"
         :input-props="{
-          class: 'transaction-form__input',
+          class: 'transactions-form__input',
           ['aria-label']: 'Категория',
           disabled: state !== ButtonState.NORMAL,
           placeholder: 'Категория',
@@ -91,7 +91,7 @@ const handleSubmit = (evt: Event) => {
       <UISelect
         v-model="transactionType"
         :select-props="{
-          class: 'transaction-form__input',
+          class: 'transactions-form__input',
           ['aria-label']: 'Тип записи',
           disabled: state !== ButtonState.NORMAL,
           required: true,
@@ -101,7 +101,7 @@ const handleSubmit = (evt: Event) => {
       <UIInput
         v-model="sum"
         :input-props="{
-          class: 'transaction-form__input',
+          class: 'transactions-form__input',
           ['aria-label']: 'Сумма',
           disabled: state !== ButtonState.NORMAL,
           inputmode: 'numeric',
@@ -116,7 +116,7 @@ const handleSubmit = (evt: Event) => {
       <UIInput
         v-model="date"
         :input-props="{
-          class: 'transaction-form__input',
+          class: 'transactions-form__input',
           ['aria-label']: 'Дата',
           disabled: state !== ButtonState.NORMAL,
           placeholder: 'Дата',
@@ -127,7 +127,7 @@ const handleSubmit = (evt: Event) => {
     </fieldset>
 
     <UIButton
-      element-class="transaction-form__button"
+      element-class="transactions-form__button"
       :state="state"
       :aria-label="ButtonState.NORMAL ? 'Добавить запись' : 'Запись добавляется'"
       text="Добавить"
@@ -137,7 +137,7 @@ const handleSubmit = (evt: Event) => {
 </template>
 
 <style lang="scss">
-.transaction-form {
+.transactions-form {
   display: grid;
   gap: $mobile-inner-gap;
 
@@ -146,7 +146,7 @@ const handleSubmit = (evt: Event) => {
   }
 }
 
-.transaction-form__fieldset {
+.transactions-form__fieldset {
   display: grid;
   gap: 16px;
   margin: 0;
@@ -159,12 +159,12 @@ const handleSubmit = (evt: Event) => {
   }
 }
 
-.transaction-form__input {
+.transactions-form__input {
   min-width: calc(100% - 16px);
   appearance: none;
 }
 
-.transaction-form__button {
+.transactions-form__button {
   justify-self: center;
 }
 </style>

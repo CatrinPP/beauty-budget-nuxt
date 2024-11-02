@@ -9,15 +9,21 @@ const { to, title, icon } = defineProps<Props>();
 </script>
 
 <template>
-  <NuxtLink class="header-link" active-class="header-link_active" :to :title>
-    <svg class="header-link__icon" viewBox="-2 0 34 34" width="34" height="34" role="presentation">
+  <NuxtLink class="link" active-class="link_active" :to :title>
+    <svg
+      class="link__icon"
+      viewBox="-2 0 34 34"
+      width="34"
+      height="34"
+      role="presentation"
+    >
       <use :href="`/sprite.svg#${icon}`" />
     </svg>
   </NuxtLink>
 </template>
 
 <style scoped lang="scss">
-.header-link {
+.link {
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
@@ -26,25 +32,25 @@ const { to, title, icon } = defineProps<Props>();
   text-decoration: none;
 
   &:hover {
-    .header-link__icon {
+    .link__icon {
       opacity: 0.85;
     }
   }
 
   &:active {
-    .header-link__icon {
+    .link__icon {
       opacity: 0.95;
     }
   }
 }
 
-.header-link_active {
-  .header-link__icon {
+.link_active {
+  .link__icon {
     fill: var(--color-accent);
   }
 }
 
-.header-link__icon {
+.link__icon {
   height: 34px;
   width: 34px;
 

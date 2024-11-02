@@ -12,10 +12,10 @@ const store = useTransactionsStore();
 
 <template>
   <div class="main-page">
-    <TransactionForm />
+    <TransactionsForm />
     <section class="main-page__section">
       <h2 class="main-page__section-title">Последние добавленные записи</h2>
-      <TransactionList
+      <TransactionsList
         v-if="store.lastTransactions.length"
         :transactions="store.lastTransactions"
         :delete-transaction="store.deleteTransaction"

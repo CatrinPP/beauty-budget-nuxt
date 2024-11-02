@@ -18,28 +18,28 @@ const handleDeleteButtonClick = (transactionId: string) => {
 </script>
 
 <template>
-  <ul class="transaction-list">
+  <ul class="transactions-list">
     <li
       v-for="transaction in transactions"
       :key="transaction.id"
-      class="transaction-list__item"
-      :class="{ 'transaction-list__item_editable': !!deleteTransaction }"
+      class="transactions-list__item"
+      :class="{ 'transactions-list__item_editable': !!deleteTransaction }"
     >
-      <span class="transaction-list__item-data">{{
+      <span class="transactions-list__item-data">{{
         `${TransactionSign[transaction.type]}${formatSum(transaction.sum)}`
       }}</span>
-      <span class="transaction-list__item-data">{{ transaction.category }}</span>
-      <span class="transaction-list__item-data">{{
+      <span class="transactions-list__item-data">{{ transaction.category }}</span>
+      <span class="transactions-list__item-data">{{
         dayjs(transaction.date).format('DD.MM.YYYY')
       }}</span>
       <button
         v-if="!!deleteTransaction"
-        class="transaction-list__item-button"
+        class="transactions-list__item-button"
         aria-label="Удалить запись"
         @click="handleDeleteButtonClick(transaction.id)"
       >
         <svg
-          class="transaction-list__item-button-icon"
+          class="transactions-list__item-button-icon"
           viewBox="-1 0 24 24"
           width="24"
           height="24"
@@ -53,11 +53,11 @@ const handleDeleteButtonClick = (transactionId: string) => {
 </template>
 
 <style scoped lang="scss">
-.transaction-list {
+.transactions-list {
   @include reset-list();
 }
 
-.transaction-list__item {
+.transactions-list__item {
   @include reset-list-item();
   display: grid;
   grid-template-columns: minmax(80px, 30%) 1fr minmax(80px, 30%);
@@ -79,31 +79,31 @@ const handleDeleteButtonClick = (transactionId: string) => {
   }
 }
 
-.transaction-list__item-data {
+.transactions-list__item-data {
   word-break: break-word;
 }
 
-.transaction-list__item-data:last-child {
+.transactions-list__item-data:last-child {
   text-align: end;
 }
 
-.transaction-list__item-button {
+.transactions-list__item-button {
   @include reset-button();
 
   &:hover {
-    .transaction-list__item-button-icon {
+    .transactions-list__item-button-icon {
       opacity: 0.85;
     }
   }
 
   &:active {
-    .transaction-list__item-button-icon {
+    .transactions-list__item-button-icon {
       opacity: 0.95;
     }
   }
 }
 
-.transaction-list__item-button-icon {
+.transactions-list__item-button-icon {
   height: 24px;
   width: 24px;
 

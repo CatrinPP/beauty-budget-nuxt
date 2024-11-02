@@ -3,13 +3,13 @@ const store = useTransactionsStore();
 </script>
 
 <template>
-  <p class="transactions-balance">
-    Текущий баланс:<span class="transactions-balance__amount">{{ formatSum(store.balance) }}</span>
+  <p class="balance">
+    Текущий баланс:<span class="balance__amount">{{ formatSum(store.balance) }}</span>
   </p>
 </template>
 
 <style scoped lang="scss">
-.transactions-balance {
+.balance {
   display: flex;
   align-items: baseline;
   justify-content: end;
@@ -19,7 +19,7 @@ const store = useTransactionsStore();
   @include subtitle();
 }
 
-.transactions-balance__amount {
+.balance__amount {
   min-width: 20px;
   padding-left: 10px;
 

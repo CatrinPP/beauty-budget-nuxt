@@ -15,21 +15,21 @@ const getHeightPercentage = (value: number) => {
 </script>
 
 <template>
-  <figure class="bar-chart">
-    <h2 class="bar-chart__title">{{ title }}</h2>
-    <div className="bar-chart__diagram">
-      <ul className="bar-chart__diagram-items">
+  <figure class="chart">
+    <h2 class="chart__title">{{ title }}</h2>
+    <div className="chart__diagram">
+      <ul className="chart__diagram-items">
         <li
           v-for="[name, sum] in values"
           :key="name"
-          class="bar-chart__diagram-item"
+          class="chart__diagram-item"
           :style="{ height: getHeightPercentage(sum) }"
         />
       </ul>
     </div>
-    <figcaption class="bar-chart__caption">
-      <ul class="bar-chart__list">
-        <li v-for="[name, sum] in values" :key="name" class="bar-chart__list-item">
+    <figcaption class="chart__caption">
+      <ul class="chart__list">
+        <li v-for="[name, sum] in values" :key="name" class="chart__list-item">
           {{ name }} - {{ formatSum(sum) }}
         </li>
       </ul>
@@ -38,7 +38,7 @@ const getHeightPercentage = (value: number) => {
 </template>
 
 <style scoped lang="scss">
-.bar-chart {
+.chart {
   @include chart();
   min-height: 350px;
 
@@ -50,7 +50,7 @@ const getHeightPercentage = (value: number) => {
   }
 }
 
-.bar-chart__title {
+.chart__title {
   @include subtitle();
   text-align: center;
 
@@ -59,7 +59,7 @@ const getHeightPercentage = (value: number) => {
   }
 }
 
-.bar-chart__diagram {
+.chart__diagram {
   height: 200px;
   padding: 16px 16px 0;
 
@@ -71,7 +71,7 @@ const getHeightPercentage = (value: number) => {
   }
 }
 
-.bar-chart__diagram-items {
+.chart__diagram-items {
   @include reset-list();
   display: grid;
   align-items: end;
@@ -82,7 +82,7 @@ const getHeightPercentage = (value: number) => {
   height: 100%;
 }
 
-.bar-chart__diagram-item {
+.chart__diagram-item {
   @include reset-list-item();
   width: 30px;
   height: 100%;
@@ -92,15 +92,15 @@ const getHeightPercentage = (value: number) => {
   transition: height $transition;
 }
 
-.bar-chart__diagram-item:nth-child(2n - 1) {
+.chart__diagram-item:nth-child(2n - 1) {
   background-color: $color-income;
 }
 
-.bar-chart__diagram-item:nth-child(2n) {
+.chart__diagram-item:nth-child(2n) {
   background-color: $color-outcome;
 }
 
-.bar-chart__caption {
+.chart__caption {
   align-self: center;
 
   @include wide-mobile() {
@@ -108,11 +108,11 @@ const getHeightPercentage = (value: number) => {
   }
 }
 
-.bar-chart__list {
+.chart__list {
   @include chart-caption-list();
 }
 
-.bar-chart__list-item {
+.chart__list-item {
   @include chart-caption-item();
 
   &::before {
