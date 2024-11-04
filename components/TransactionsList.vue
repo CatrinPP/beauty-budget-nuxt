@@ -3,12 +3,10 @@ import dayjs from 'dayjs';
 import { TransactionSign } from '~/constants/transaction';
 import type { ITransaction } from '~/types/transaction';
 
-interface Props {
+const { transactions, deleteTransaction } = defineProps<{
   transactions: ITransaction[];
   deleteTransaction?: (id: string) => void;
-}
-
-const { transactions, deleteTransaction } = defineProps<Props>();
+}>();
 
 const handleDeleteButtonClick = (transactionId: string) => {
   if (window.confirm('Удалить запись?') && typeof deleteTransaction === 'function') {

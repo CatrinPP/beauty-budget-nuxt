@@ -1,11 +1,9 @@
 <script setup lang="ts">
-interface Props {
+const { title, total, values } = defineProps<{
   title: string;
   total: number;
   values: [string, number][];
-}
-
-const { title, total, values } = defineProps<Props>();
+}>();
 const valuesCount = values.length;
 
 function getValueCharSum(value: string): number {

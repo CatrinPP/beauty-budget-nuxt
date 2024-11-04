@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import type { InputHTMLAttributes } from 'vue';
 
-interface Props {
+const { inputProps } = defineProps<{
   inputProps: InputHTMLAttributes;
   dataListOptions?: string[];
-}
-
-const { inputProps } = defineProps<Props>();
+}>();
 const model = defineModel<string | number>();
 const id = inputProps.id || useId();
 const listId = `${id}-list`;

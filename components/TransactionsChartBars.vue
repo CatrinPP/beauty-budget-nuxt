@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import type { IBarChartValue } from '~/types/chart';
 
-interface Props {
+const { title, total, values } = defineProps<{
   title: string;
   total: number;
   values: IBarChartValue[];
-}
-
-const { title, total, values } = defineProps<Props>();
+}>();
 
 const getHeightPercentage = (value: number) => {
   return value > 0 ? `${Math.floor((value * 100) / total)}%` : '0%';

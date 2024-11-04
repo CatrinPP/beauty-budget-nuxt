@@ -2,12 +2,10 @@
 import type { SelectHTMLAttributes } from 'vue';
 import type { IOption } from '~/types/option';
 
-interface Props {
+const { selectProps } = defineProps<{
   selectProps: SelectHTMLAttributes;
   options: IOption[];
-}
-
-const { selectProps } = defineProps<Props>();
+}>();
 const model = defineModel<string>();
 const id = selectProps.id || useId();
 </script>

@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { ButtonState } from '~/constants/button-state';
 
-interface Props {
+const {
+  text,
+  type = 'button',
+  state = ButtonState.NORMAL,
+} = defineProps<{
   elementClass?: string;
   text: string;
   type?: 'button' | 'submit';
   state?: ButtonState;
-}
-
-const { text, type = 'button', state = ButtonState.NORMAL } = defineProps<Props>();
+}>();
 </script>
 
 <template>
