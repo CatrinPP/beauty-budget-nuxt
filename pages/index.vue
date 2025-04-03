@@ -7,15 +7,34 @@ useHead({
   },
 });
 
+const route = useRoute();
+const isInFrame = computed(() => route.query.inframe === 'true');
+
+onBeforeMount(() => {
+  if (isInFrame.value) {
+    console.log('isInFrame');
+
+    window.parent?.postMessage({
+      event: 'bb-loaded',
+      text: 'parent message',
+    });
+
+    window.top?.postMessage({
+      event: 'bb-loaded',
+      text: 'top message',
+    });
+  }
+});
+
 const store = useTransactionsStore();
 </script>
 
 <template>
   <div class="main-page">
-    <TransactionForm />
+    <TransactionsForm />
     <section class="main-page__section">
       <h2 class="main-page__section-title">Последние добавленные записи</h2>
-      <TransactionList
+      <TransactionsList
         v-if="store.lastTransactions.length"
         :transactions="store.lastTransactions"
         :delete-transaction="store.deleteTransaction"

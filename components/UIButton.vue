@@ -1,20 +1,22 @@
 <script setup lang="ts">
 import { ButtonState } from '~/constants/button-state';
 
-interface Props {
+const {
+  text,
+  type = 'button',
+  state = ButtonState.NORMAL,
+} = defineProps<{
   elementClass?: string;
   text: string;
   type?: 'button' | 'submit';
   state?: ButtonState;
-}
-
-const { text, type = 'button', state = ButtonState.NORMAL } = defineProps<Props>();
+}>();
 </script>
 
 <template>
   <button
-    class="ui-button"
-    :class="`${elementClass} ui-button_state_${state}`"
+    class="button"
+    :class="`${elementClass} button_state_${state}`"
     :disabled="state !== ButtonState.NORMAL"
     :type
   >
@@ -29,7 +31,7 @@ const { text, type = 'button', state = ButtonState.NORMAL } = defineProps<Props>
   }
 }
 
-.ui-button {
+.button {
   @include reset-button();
   position: relative;
 
@@ -81,8 +83,8 @@ const { text, type = 'button', state = ButtonState.NORMAL } = defineProps<Props>
   }
 }
 
-.ui-button_state_processing,
-.ui-button_state_success {
+.button_state_processing,
+.button_state_success {
   color: transparent;
   pointer-events: none;
 
@@ -92,14 +94,14 @@ const { text, type = 'button', state = ButtonState.NORMAL } = defineProps<Props>
   }
 }
 
-.ui-button_state_processing {
+.button_state_processing {
   &::after {
     animation: loader 1s linear infinite;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cpath d='M21 12a9 9 0 11-6.219-8.56'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
   }
 }
 
-.ui-button_state_success {
+.button_state_success {
   &::after {
     background-image: url("data:image/svg+xml,%3Csvg fill='%23ffffff' version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 78.369 78.369' xml:space='preserve' stroke='%23ffffff'%3E%3Cg id='SVGRepo_bgCarrier' stroke-width='0'%3E%3C/g%3E%3Cg id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'%3E%3C/g%3E%3Cg id='SVGRepo_iconCarrier'%3E%3Cg%3E%3Cpath d='M78.049,19.015L29.458,67.606c-0.428,0.428-1.121,0.428-1.548,0L0.32,40.015c-0.427-0.426-0.427-1.119,0-1.547l6.704-6.704 c0.428-0.427,1.121-0.427,1.548,0l20.113,20.112l41.113-41.113c0.429-0.427,1.12-0.427,1.548,0l6.703,6.704 C78.477,17.894,78.477,18.586,78.049,19.015z'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }

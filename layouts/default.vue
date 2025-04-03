@@ -1,6 +1,6 @@
 <template>
-  <div class="main-layout">
-    <div class="main-layout__wrapper">
+  <div class="default-layout">
+    <div class="default-layout__wrapper">
       <PageHeader />
       <slot />
     </div>
@@ -8,7 +8,7 @@
 </template>
 
 <style scoped lang="scss">
-.main-layout {
+.default-layout {
   box-sizing: border-box;
   display: grid;
   min-height: 100vh;
@@ -24,7 +24,7 @@
   }
 }
 
-.main-layout__wrapper {
+.default-layout__wrapper {
   box-sizing: border-box;
   display: grid;
   align-content: start;

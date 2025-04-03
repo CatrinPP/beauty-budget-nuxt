@@ -2,18 +2,16 @@
 import type { SelectHTMLAttributes } from 'vue';
 import type { IOption } from '~/types/option';
 
-interface Props {
+const { selectProps } = defineProps<{
   selectProps: SelectHTMLAttributes;
   options: IOption[];
-}
-
-const { selectProps } = defineProps<Props>();
+}>();
 const model = defineModel<string>();
 const id = selectProps.id || useId();
 </script>
 
 <template>
-  <select :id v-model="model" class="ui-select" v-bind="selectProps">
+  <select :id v-model="model" class="select" v-bind="selectProps">
     <option
       v-for="option in options"
       :key="option.value"
@@ -26,7 +24,7 @@ const id = selectProps.id || useId();
 </template>
 
 <style lang="scss" scoped>
-.ui-select {
+.select {
   @include input();
   padding-right: 30px;
 

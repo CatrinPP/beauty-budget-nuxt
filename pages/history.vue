@@ -12,7 +12,7 @@ const store = useTransactionsStore();
 
 <template>
   <div class="history-page">
-    <TransactionList
+    <TransactionsList
       v-if="store.transactions.length"
       :delete-transaction="store.deleteTransaction"
       :transactions="store.transactions"

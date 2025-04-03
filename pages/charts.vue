@@ -16,17 +16,17 @@ const barChartValues: IBarChartValue[] = [
 
 <template>
   <div class="charts-page">
-    <PieChart
+    <TransactionsChartPie
       title="Доходы по категориям"
       :values="store.incomeCategoriesSortedBySum"
       :total="store.totalTransactionsSum.income"
     />
-    <PieChart
+    <TransactionsChartPie
       title="Расходы по категориям"
       :values="store.outcomeCategoriesSortedBySum"
       :total="store.totalTransactionsSum.outcome"
     />
-    <BarChart
+    <TransactionsChartBars
       title="Доходы vs Расходы"
       :total="store.totalTransactionsSum.total"
       :values="barChartValues"
