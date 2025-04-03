@@ -7,6 +7,25 @@ useHead({
   },
 });
 
+const route = useRoute();
+const isInFrame = computed(() => route.query.inframe === 'true');
+
+onBeforeMount(() => {
+  if (isInFrame.value) {
+    console.log('isInFrame');
+
+    window.parent?.postMessage({
+      event: 'bb-loaded',
+      text: 'parent message',
+    });
+
+    window.top?.postMessage({
+      event: 'bb-loaded',
+      text: 'top message',
+    });
+  }
+});
+
 const store = useTransactionsStore();
 </script>
 
