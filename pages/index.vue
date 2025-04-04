@@ -11,6 +11,7 @@ const route = useRoute();
 const isInFrame = computed(() => route.query.inframe === 'true');
 
 onBeforeMount(() => {
+  window.addEventListener('message', (evt) => console.log(evt, 'EVENT MESSAGE'));
   if (isInFrame.value) {
     console.log('isInFrame');
 
