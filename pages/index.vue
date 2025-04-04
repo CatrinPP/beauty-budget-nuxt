@@ -11,19 +11,24 @@ const route = useRoute();
 const isInFrame = computed(() => route.query.inframe === 'true');
 
 onBeforeMount(() => {
-  window.addEventListener('message', (evt) => console.log(evt, 'EVENT MESSAGE'));
   if (isInFrame.value) {
     console.log('isInFrame');
 
-    window.parent?.postMessage({
-      event: 'bb-loaded',
-      text: 'parent message',
-    });
+    window.parent?.postMessage(
+      {
+        event: 'bb-loaded',
+        text: 'parent message',
+      },
+      '*'
+    );
 
-    window.top?.postMessage({
-      event: 'bb-loaded',
-      text: 'top message',
-    });
+    window.top?.postMessage(
+      {
+        event: 'bb-loaded',
+        text: 'top message',
+      },
+      '*'
+    );
   }
 });
 
